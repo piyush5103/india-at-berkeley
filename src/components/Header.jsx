@@ -81,6 +81,11 @@ const Header = () => (
             <HeaderLinks>
                 <Link
                     activeClassName="Link--is-active"
+                    to="/index">
+                    Home
+                </Link>
+                <Link
+                    activeClassName="Link--is-active"
                     to="/work">
                     Work
                 </Link>
