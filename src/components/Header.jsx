@@ -6,7 +6,7 @@ import dimensions from "styles/dimensions";
 import Logo from "components/_ui/Logo";
 
 const HeaderContainer = styled("div")`
-    padding-top: 3.75em;
+    padding-top: 2em;
     padding-bottom: 3em;
 `
 
@@ -46,7 +46,7 @@ const HeaderLinks = styled("div")`
         &:after {
             position: absolute;
             content: "";
-            bottom: 0;
+            bottom: 10;
             width: 18px;
             height: 3px;
             background: transparent;
