@@ -1,7 +1,7 @@
 import React from "react";
 
 const Logo = () => (
-    <img src={"./logo.png"} />
+    <img src={"images/logo.png"} />
 );
 
 export default Logo;
