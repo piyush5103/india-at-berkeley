@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
 
-const PostCardContainer = styled(Link)`
+const PostCardContainer = styled("a")`
     border: 1px solid ${colors.grey200};
     padding: 3em 2.5em 2.25em 2.5em;
     border-radius: 3px;
@@ -89,7 +89,7 @@ const PostCardAction = styled("div")`
 `
 
 const PostCard = ({ author, category, date, title, description, uid, image, linkedin }) => (
-    <PostCardContainer className="BlogPostCard" to={linkedin[0].text}>
+    <PostCardContainer className="BlogPostCard" href={linkedin[0].text}>
         <PostCategory>
             {category[0].text}
         </PostCategory>
