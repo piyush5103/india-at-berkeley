@@ -11,9 +11,9 @@ import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import slide1 from "./slide1.png";
-import slide2 from "./slide2.png";
-import slide3 from "./slide3.png";
+import slide1 from "images/slide1.png";
+import slide2 from "images/slide2.png";
+import slide3 from "images/slide3.png";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
