@@ -187,6 +187,7 @@ export const query = graphql`
                         post_hero_image
                         post_hero_annotation
                         post_date
+                        linkedin
                         post_category
                         post_body
                         post_author

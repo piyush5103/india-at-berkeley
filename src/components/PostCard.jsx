@@ -40,7 +40,7 @@ const PostCategory = styled("h6")`
     color: ${colors.grey600};
 `
 
-const PostTitle = styled("h3")`
+const PostTitle = styled("h4")`
     margin: 0;
     margin-top: 0.5em;
 `
@@ -66,8 +66,8 @@ const PostImage = styled("div")`
 `
 
 const PostDescription = styled("div")`
-    margin-top: 2em;
-    margin-bottom: 4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 
     p:last-of-type {
         margin: 0;
@@ -88,13 +88,13 @@ const PostCardAction = styled("div")`
     }
 `
 
-const PostCard = ({ author, category, date, title, description, uid, image }) => (
-    <PostCardContainer className="BlogPostCard" to={`/blog/${uid}`}>
+const PostCard = ({ author, category, date, title, description, uid, image, linkedin }) => (
+    <PostCardContainer className="BlogPostCard" to={linkedin}>
         <PostCategory>
             {category[0].text}
         </PostCategory>
         <PostImage>
-        <img src={image.url} alt="team" width="100%" />
+            <img src={image.url} alt="team" width="100%" />
         </PostImage>
         <PostTitle>
             {title[0].text}
@@ -103,16 +103,9 @@ const PostCard = ({ author, category, date, title, description, uid, image }) =>
             {RichText.render(description)}
         </PostDescription>
         <PostCardAction className="PostCardAction">
-            Read more <span>&#8594;</span>
+            LinkedIn <span>&#8594;</span>
         </PostCardAction>
-        <PostMetas>
-            <PostAuthor>
-                {author}
-            </PostAuthor>
-            <PostDate>
-                <Moment format="MMMM D, YYYY">{date}</Moment>
-            </PostDate>
-        </PostMetas>
+
     </PostCardContainer>
 )
 
@@ -124,5 +117,6 @@ PostCard.propTypes = {
     date: PropTypes.string.isRequired,
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
-    uid: PropTypes.string.isRequired
+    uid: PropTypes.string.isRequired,
+    linkedin: PropTypes.string.isRequired
 }

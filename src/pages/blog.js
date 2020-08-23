@@ -30,8 +30,8 @@ const BlogGrid = styled("div")`
 const Blog = ({ posts, meta }) => (
     <>
         <Helmet
-            title={`Blog | Prist,  & Prismic Starter`}
-            titleTemplate={`%s | Blog | Prist, Gatsby & Prismic Starter`}
+            title={`Our Team | Speaker Series India`}
+            titleTemplate={`%s | Our Team | Speaker Series India`}
             meta={[
                 {
                     name: `description`,
@@ -39,7 +39,7 @@ const Blog = ({ posts, meta }) => (
                 },
                 {
                     property: `og:title`,
-                    content: `Blog | Prist, Gatsby & Prismic Starter`,
+                    content: `BOur Team | Speaker Series India`,
                 },
                 {
                     property: `og:description`,
@@ -72,7 +72,7 @@ const Blog = ({ posts, meta }) => (
                     
                 
             <BlogTitle>
-                Blog
+                Our Team
             </BlogTitle>
             <BlogGrid>
                 {posts.map((post, i) => (
@@ -85,6 +85,7 @@ const Blog = ({ posts, meta }) => (
                         description={post.node.post_preview_description}
                         uid={post.node._meta.uid}
                         image={post.node.post_hero_image}
+                        linkedin={post.node.linkedin}
                     />
                 ))}
             </BlogGrid>
@@ -120,6 +121,7 @@ export const query = graphql`
                         post_category
                         post_preview_description
                         post_author
+                        linkedin
                         _meta {
                             uid
                         }

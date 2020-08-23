@@ -11,6 +11,9 @@ import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import slide1 from "./slide1.png";
+import slide2 from "./slide2.png";
+import slide3 from "./slide3.png";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -178,10 +181,16 @@ const RenderBody = ({ home, projects, meta }) => (
                 onSwiper={(swiper) => console.log(swiper)}
                 onSlideChange={() => console.log('slide change')}
             >
-                <SwiperSlide>Slide 1</SwiperSlide>
-                <SwiperSlide>Slide 2</SwiperSlide>
-                <SwiperSlide>Slide 3</SwiperSlide>
-                <SwiperSlide>Slide 4</SwiperSlide>
+                <SwiperSlide>
+                <img src={slide1} alt="slide" width="100%" />
+                </SwiperSlide>
+                <SwiperSlide>
+                <img src={slide2} alt="slide" width="100%" />
+                </SwiperSlide>
+                <SwiperSlide>
+                <img src={slide3} alt="slide" width="100%" />
+                </SwiperSlide>
+                
       ...
     </Swiper>
            
