@@ -172,7 +172,7 @@ const RenderBody = ({ home, projects, meta }) => (
       ].concat(meta)}
     />
     <Hero>
-      <>{RichText.render(home.hero_title)}</>
+      {/* <>{RichText.render(home.hero_title)}</> */}
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -208,7 +208,7 @@ const RenderBody = ({ home, projects, meta }) => (
         />
       ))}
       <WorkAction to={"/work"}>
-        See more work <span>&#8594;</span>
+        See more speakers <span>&#8594;</span>
       </WorkAction>
     </Section>
     <Section>
