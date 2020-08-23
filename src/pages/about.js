@@ -71,13 +71,11 @@ const RenderBody = ({ home, projects, meta }) => (
         />
    
    
-    <Layout>
     <AboutTitle>
                 About
             </AboutTitle>
       {RichText.render(home.about_title)}
       <About bio={home.about_bio} socialLinks={home.about_links} />
-    </Layout>
   </>
 )
 
