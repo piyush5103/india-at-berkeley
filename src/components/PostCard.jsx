@@ -94,7 +94,7 @@ const PostCard = ({ author, category, date, title, description, uid, image }) =>
             {category[0].text}
         </PostCategory>
         <PostImage>
-        <img src={image.url} alt="bees" />
+        <img src={image.url} alt="team" width="100%" />
         </PostImage>
         <PostTitle>
             {title[0].text}
