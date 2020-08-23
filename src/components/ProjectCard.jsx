@@ -170,7 +170,7 @@ const ProjectCard = ({ category, title, description, thumbnail, uid}) => (
                 {RichText.render(description)}
             </ProjectCardBlurb>
             <ProjectCardAction className="ProjectCardAction">
-                Details <span>&#8594;</span>
+                See more <span>&#8594;</span>
             </ProjectCardAction>
         </ProjectCardContent>
         <ProjectCardImageContainer className="ProjectCardImageContainer">
