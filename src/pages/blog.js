@@ -30,7 +30,7 @@ const BlogGrid = styled("div")`
 const Blog = ({ posts, meta }) => (
     <>
         <Helmet
-            title={`Blog | Prist, Gatsby & Prismic Starter`}
+            title={`Blog | Prist,  & Prismic Starter`}
             titleTemplate={`%s | Blog | Prist, Gatsby & Prismic Starter`}
             meta={[
                 {
@@ -68,6 +68,9 @@ const Blog = ({ posts, meta }) => (
             ].concat(meta)}
         />
         <Layout>
+        
+                    
+                
             <BlogTitle>
                 Blog
             </BlogTitle>
@@ -81,6 +84,7 @@ const Blog = ({ posts, meta }) => (
                         date={post.node.post_date}
                         description={post.node.post_preview_description}
                         uid={post.node._meta.uid}
+                        image={post.node.post_hero_image}
                     />
                 ))}
             </BlogGrid>
@@ -111,6 +115,7 @@ export const query = graphql`
                 edges {
                     node {
                         post_title
+                        post_hero_image
                         post_date
                         post_category
                         post_preview_description

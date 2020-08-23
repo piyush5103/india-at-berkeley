@@ -61,6 +61,9 @@ const PostAuthor = styled("div")`
 const PostDate = styled("div")`
     margin: 0;
 `
+const PostImage = styled("div")`
+    margin: 0;
+`
 
 const PostDescription = styled("div")`
     margin-top: 2em;
@@ -85,11 +88,14 @@ const PostCardAction = styled("div")`
     }
 `
 
-const PostCard = ({ author, category, date, title, description, uid}) => (
+const PostCard = ({ author, category, date, title, description, uid, image }) => (
     <PostCardContainer className="BlogPostCard" to={`/blog/${uid}`}>
         <PostCategory>
             {category[0].text}
         </PostCategory>
+        <PostImage>
+        <img src={image.url} alt="bees" />
+        </PostImage>
         <PostTitle>
             {title[0].text}
         </PostTitle>

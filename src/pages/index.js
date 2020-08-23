@@ -1,96 +1,130 @@
-import React from "react";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import { RichText } from "prismic-reactjs";
-import { graphql, Link } from "gatsby";
-import styled from "@emotion/styled";
-import colors from "styles/colors";
-import dimensions from "styles/dimensions";
-import Button from "components/_ui/Button";
-import About from "components/About";
-import Layout from "components/Layout";
-import ProjectCard from "components/ProjectCard";
+import React from "react"
+import PropTypes from "prop-types"
+import Helmet from "react-helmet"
+import { RichText } from "prismic-reactjs"
+import { graphql, Link } from "gatsby"
+import styled from "@emotion/styled"
+import colors from "styles/colors"
+import dimensions from "styles/dimensions"
+import Button from "components/_ui/Button"
+import About from "components/About"
+import Layout from "components/Layout"
+import ProjectCard from "components/ProjectCard"
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/swiper.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 const Hero = styled("div")`
-    padding-top: 2.5em;
-    padding-bottom: 3em;
-    margin-bottom: 6em;
-    max-width: 830px;
+  padding-top: 2.5em;
+  padding-bottom: 3em;
+  margin-bottom: 6em;
+ 
 
-    @media(max-width:${dimensions.maxwidthMobile}px) {
-       margin-bottom: 3em;
-    }
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    margin-bottom: 3em;
+  }
 
-    h1 {
-        margin-bottom: 1em;
+  h1 {
+    margin-bottom: 1em;
 
-        a {
-            text-decoration: none;
-            transition: all 100ms ease-in-out;
+    a {
+      text-decoration: none;
+      transition: all 100ms ease-in-out;
 
-            &:nth-of-type(1) { color: ${colors.blue500}; }
-            &:nth-of-type(2) { color: ${colors.orange500}; }
-            &:nth-of-type(3) { color: ${colors.purple500}; }
-            &:nth-of-type(4) { color: ${colors.green500}; }
-            &:nth-of-type(5) { color: ${colors.teal500}; }
+      &:nth-of-type(1) {
+        color: ${colors.blue500};
+      }
+      &:nth-of-type(2) {
+        color: ${colors.orange500};
+      }
+      &:nth-of-type(3) {
+        color: ${colors.purple500};
+      }
+      &:nth-of-type(4) {
+        color: ${colors.green500};
+      }
+      &:nth-of-type(5) {
+        color: ${colors.teal500};
+      }
 
-            &:hover {
-                cursor: pointer;
-                transition: all 100ms ease-in-out;
+      &:hover {
+        cursor: pointer;
+        transition: all 100ms ease-in-out;
 
-                &:nth-of-type(1) { color: ${colors.blue600};    background-color: ${colors.blue200};}
-                &:nth-of-type(2) { color: ${colors.orange600};  background-color: ${colors.orange200};}
-                &:nth-of-type(3) { color: ${colors.purple600};  background-color: ${colors.purple200};}
-                &:nth-of-type(4) { color: ${colors.green600};   background-color: ${colors.green200};}
-                &:nth-of-type(5) { color: ${colors.teal600};    background-color: ${colors.teal200};}
-
-            }
+        &:nth-of-type(1) {
+          color: ${colors.blue600};
+          background-color: ${colors.blue200};
         }
+        &:nth-of-type(2) {
+          color: ${colors.orange600};
+          background-color: ${colors.orange200};
+        }
+        &:nth-of-type(3) {
+          color: ${colors.purple600};
+          background-color: ${colors.purple200};
+        }
+        &:nth-of-type(4) {
+          color: ${colors.green600};
+          background-color: ${colors.green200};
+        }
+        &:nth-of-type(5) {
+          color: ${colors.teal600};
+          background-color: ${colors.teal200};
+        }
+      }
     }
+  }
 `
 
 const Section = styled("div")`
-    margin-bottom: 10em;
-    display: flex;
-    flex-direction: column;
+  margin-bottom: 10em;
+  display: flex;
+  flex-direction: column;
 
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-        margin-bottom: 4em;
-    }
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    margin-bottom: 4em;
+  }
 
-    &:last-of-type {
-        margin-bottom: 0;
-    }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
 `
 
 const WorkAction = styled(Link)`
-    font-weight: 600;
-    text-decoration: none;
-    color: currentColor;
-    transition: all 150ms ease-in-out;
-    margin-left: auto;
+  font-weight: 600;
+  text-decoration: none;
+  color: currentColor;
+  transition: all 150ms ease-in-out;
+  margin-left: auto;
 
-    @media(max-width:${dimensions.maxwidthTablet}px) {
-       margin: 0 auto;
-    }
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+    margin: 0 auto;
+  }
+
+  span {
+    margin-left: 1em;
+    transform: translateX(-8px);
+    display: inline-block;
+    transition: transform 400ms ease-in-out;
+  }
+
+  &:hover {
+    color: ${colors.blue500};
+    transition: all 150ms ease-in-out;
 
     span {
-        margin-left: 1em;
-        transform: translateX(-8px);
-        display: inline-block;
-        transition: transform 400ms ease-in-out;
+      transform: translateX(0px);
+      opacity: 1;
+      transition: transform 150ms ease-in-out;
     }
-
-    &:hover {
-        color: ${colors.blue500};
-        transition: all 150ms ease-in-out;
-
-        span {
-            transform: translateX(0px);
-            opacity: 1;
-            transition: transform 150ms ease-in-out;
-        }
-    }
+  }
 `
 
 const RenderBody = ({ home, projects, meta }) => (
@@ -134,15 +168,23 @@ const RenderBody = ({ home, projects, meta }) => (
             ].concat(meta)}
         />
         <Hero>
-            <>
-                {RichText.render(home.hero_title)}
-            </>
-            <a href={home.hero_button_link.url}
-               target="_blank" rel="noopener noreferrer">
-                <Button>
-                    {RichText.render(home.hero_button_text)}
-                </Button>
-            </a>
+            <>{RichText.render(home.hero_title)}</>
+            <Swiper
+                spaceBetween={50}
+                slidesPerView={1}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                onSwiper={(swiper) => console.log(swiper)}
+                onSlideChange={() => console.log('slide change')}
+            >
+                <SwiperSlide>Slide 1</SwiperSlide>
+                <SwiperSlide>Slide 2</SwiperSlide>
+                <SwiperSlide>Slide 3</SwiperSlide>
+                <SwiperSlide>Slide 4</SwiperSlide>
+      ...
+    </Swiper>
+           
         </Hero>
         <Section>
             {projects.map((project, i) => (
@@ -161,25 +203,22 @@ const RenderBody = ({ home, projects, meta }) => (
         </Section>
         <Section>
             {RichText.render(home.about_title)}
-            <About
-                bio={home.about_bio}
-                socialLinks={home.about_links}
-            />
+            <About bio={home.about_bio} socialLinks={home.about_links} />
         </Section>
     </>
-);
+)
 
 export default ({ data }) => {
     //Required check for no data being returned
-    const doc = data.prismic.allHomepages.edges.slice(0, 1).pop();
-    const projects = data.prismic.allProjects.edges;
-    const meta = data.site.siteMetadata;
+    const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
+    const projects = data.prismic.allProjects.edges
+    const meta = data.site.siteMetadata
 
-    if (!doc || !projects) return null;
+    if (!doc || !projects) return null
 
     return (
         <Layout>
-            <RenderBody home={doc.node} projects={projects} meta={meta}/>
+            <RenderBody home={doc.node} projects={projects} meta={meta} />
         </Layout>
     )
 }
@@ -188,52 +227,52 @@ RenderBody.propTypes = {
     home: PropTypes.object.isRequired,
     projects: PropTypes.array.isRequired,
     meta: PropTypes.object.isRequired,
-};
+}
 
 export const query = graphql`
-    {
-        prismic {
-            allHomepages {
-                edges {
-                    node {
-                        hero_title
-                        hero_button_text
-                        hero_button_link {
-                            ... on PRISMIC__ExternalLink {
-                                _linkType
-                                url
-                            }
-                        }
-                        content
-                        about_title
-                        about_bio
-                        about_links {
-                            about_link
-                        }
-                    }
-                }
+  {
+    prismic {
+      allHomepages {
+        edges {
+          node {
+            hero_title
+            hero_button_text
+            hero_button_link {
+              ... on PRISMIC__ExternalLink {
+                _linkType
+                url
+              }
             }
-            allProjects {
-                edges {
-                    node {
-                        project_title
-                        project_preview_description
-                        project_preview_thumbnail
-                        project_category
-                        project_post_date
-                        _meta {
-                            uid
-                        }
-                    }
-                }
+            content
+            about_title
+            about_bio
+            about_links {
+              about_link
             }
+          }
         }
-        site {
-            siteMetadata {
-                title
-                description
-                author
+      }
+      allProjects {
+        edges {
+          node {
+            project_title
+            project_preview_description
+            project_preview_thumbnail
+            project_category
+            project_post_date
+            _meta {
+              uid
             }
+          }
         }
+      }
     }
+    site {
+      siteMetadata {
+        title
+        description
+        author
+      }
+    }
+  }
 `
