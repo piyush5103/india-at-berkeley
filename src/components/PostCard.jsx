@@ -67,7 +67,7 @@ const PostImage = styled("div")`
 
 const PostDescription = styled("div")`
     margin-top: 1em;
-    margin-bottom: 1em;
+    
 
     p:last-of-type {
         margin: 0;
@@ -90,9 +90,7 @@ const PostCardAction = styled("div")`
 
 const PostCard = ({ author, category, date, title, description, uid, image, linkedin }) => (
     <PostCardContainer className="BlogPostCard" href={linkedin[0].text}>
-        <PostCategory>
-            {category[0].text}
-        </PostCategory>
+        
         <PostImage>
             <img src={image.url} alt="team" width="100%" />
         </PostImage>
@@ -102,9 +100,7 @@ const PostCard = ({ author, category, date, title, description, uid, image, link
         <PostDescription>
             {RichText.render(description)}
         </PostDescription>
-        <PostCardAction className="PostCardAction">
-            LinkedIn <span>&#8594;</span>
-        </PostCardAction>
+        
 
     </PostCardContainer>
 )
@@ -112,9 +108,9 @@ const PostCard = ({ author, category, date, title, description, uid, image, link
 export default PostCard;
 
 PostCard.propTypes = {
-    author: PropTypes.string.isRequired,
-    category: PropTypes.array.isRequired,
-    date: PropTypes.string.isRequired,
+    
+    
+    
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
     uid: PropTypes.string.isRequired,
