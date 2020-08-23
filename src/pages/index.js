@@ -15,14 +15,15 @@ import slide1 from "images/slide1.png";
 import slide2 from "images/slide2.png";
 import slide3 from "images/slide3.png";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide, Autoplay } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 const Hero = styled("div")`
   padding-top: 2.5em;
@@ -131,111 +132,111 @@ const WorkAction = styled(Link)`
 `
 
 const RenderBody = ({ home, projects, meta }) => (
-    <>
-        <Helmet
-            title={meta.title}
-            titleTemplate={`%s | ${meta.title}`}
-            meta={[
-                {
-                    name: `description`,
-                    content: meta.description,
-                },
-                {
-                    property: `og:title`,
-                    content: meta.title,
-                },
-                {
-                    property: `og:description`,
-                    content: meta.description,
-                },
-                {
-                    property: `og:type`,
-                    content: `website`,
-                },
-                {
-                    name: `twitter:card`,
-                    content: `summary`,
-                },
-                {
-                    name: `twitter:creator`,
-                    content: meta.author,
-                },
-                {
-                    name: `twitter:title`,
-                    content: meta.title,
-                },
-                {
-                    name: `twitter:description`,
-                    content: meta.description,
-                },
-            ].concat(meta)}
+  <>
+    <Helmet
+      title={meta.title}
+      titleTemplate={`%s | ${meta.title}`}
+      meta={[
+        {
+          name: `description`,
+          content: meta.description,
+        },
+        {
+          property: `og:title`,
+          content: meta.title,
+        },
+        {
+          property: `og:description`,
+          content: meta.description,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:creator`,
+          content: meta.author,
+        },
+        {
+          name: `twitter:title`,
+          content: meta.title,
+        },
+        {
+          name: `twitter:description`,
+          content: meta.description,
+        },
+      ].concat(meta)}
+    />
+    <Hero>
+      <>{RichText.render(home.hero_title)}</>
+      <Swiper
+        spaceBetween={50}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 3000 }}
+        scrollbar={{ draggable: true }}
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log('slide change')}>
+        <SwiperSlide>
+          <img src={slide1} alt="slide" width="100%" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide2} alt="slide" width="100%" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slide3} alt="slide" width="100%" />
+        </SwiperSlide>
+
+
+      </Swiper>
+
+    </Hero>
+    <Section>
+      {projects.map((project, i) => (
+        <ProjectCard
+          key={i}
+          category={project.node.project_category}
+          title={project.node.project_title}
+          description={project.node.project_preview_description}
+          thumbnail={project.node.project_preview_thumbnail}
+          uid={project.node._meta.uid}
         />
-        <Hero>
-            <>{RichText.render(home.hero_title)}</>
-            <Swiper
-                spaceBetween={50}
-                slidesPerView={1}
-                navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log('slide change')}
-            >
-                <SwiperSlide>
-                <img src={slide1} alt="slide" width="100%" />
-                </SwiperSlide>
-                <SwiperSlide>
-                <img src={slide2} alt="slide" width="100%" />
-                </SwiperSlide>
-                <SwiperSlide>
-                <img src={slide3} alt="slide" width="100%" />
-                </SwiperSlide>
-                
-      ...
-    </Swiper>
-           
-        </Hero>
-        <Section>
-            {projects.map((project, i) => (
-                <ProjectCard
-                    key={i}
-                    category={project.node.project_category}
-                    title={project.node.project_title}
-                    description={project.node.project_preview_description}
-                    thumbnail={project.node.project_preview_thumbnail}
-                    uid={project.node._meta.uid}
-                />
-            ))}
-            <WorkAction to={"/work"}>
-                See more work <span>&#8594;</span>
-            </WorkAction>
-        </Section>
-        <Section>
-            {RichText.render(home.about_title)}
-            <About bio={home.about_bio} socialLinks={home.about_links} />
-        </Section>
-    </>
+      ))}
+      <WorkAction to={"/work"}>
+        See more work <span>&#8594;</span>
+      </WorkAction>
+    </Section>
+    <Section>
+      {RichText.render(home.about_title)}
+      <About bio={home.about_bio} socialLinks={home.about_links} />
+    </Section>
+  </>
 )
 
 export default ({ data }) => {
-    //Required check for no data being returned
-    const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-    const projects = data.prismic.allProjects.edges
-    const meta = data.site.siteMetadata
+  //Required check for no data being returned
+  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
+  const projects = data.prismic.allProjects.edges
+  const meta = data.site.siteMetadata
 
-    if (!doc || !projects) return null
+  if (!doc || !projects) return null
 
-    return (
-        <Layout>
-            <RenderBody home={doc.node} projects={projects} meta={meta} />
-        </Layout>
-    )
+  return (
+    <Layout>
+      <RenderBody home={doc.node} projects={projects} meta={meta} />
+    </Layout>
+  )
 }
 
 RenderBody.propTypes = {
-    home: PropTypes.object.isRequired,
-    projects: PropTypes.array.isRequired,
-    meta: PropTypes.object.isRequired,
+  home: PropTypes.object.isRequired,
+  projects: PropTypes.array.isRequired,
+  meta: PropTypes.object.isRequired,
 }
 
 export const query = graphql`
