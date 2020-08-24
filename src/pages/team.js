@@ -39,7 +39,7 @@ const Blog = ({ posts, meta }) => (
                 },
                 {
                     property: `og:title`,
-                    content: `BOur Team | Speaker Series India`,
+                    content: `Our Team | Speaker Series India`,
                 },
                 {
                     property: `og:description`,
@@ -78,8 +78,8 @@ const Blog = ({ posts, meta }) => (
                 {posts.map((post, i) => (
                     <PostCard
                         key={i}
-                        author={post.node.post_author}
-                        category={post.node.post_category}
+                       
+                        
                         title={post.node.post_title}
                         date={post.node.post_date}
                         description={post.node.post_preview_description}
@@ -118,9 +118,7 @@ export const query = graphql`
                         post_title
                         post_hero_image
                         post_date
-                        post_category
                         post_preview_description
-                        post_author
                         linkedin
                         _meta {
                             uid
