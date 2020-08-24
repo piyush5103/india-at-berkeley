@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Speaker Series | India@Berkeley`,
+    title: `Speaker Series India at Berkeley`,
         description: `Speaker Series India at Berkeley`,
     author: `Piyush Pahuja`,
   },
