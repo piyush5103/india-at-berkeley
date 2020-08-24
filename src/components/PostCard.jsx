@@ -91,7 +91,7 @@ const PostCardAction = styled("div")`
     }
 `
 
-const PostCard = ({ author, category, date, title, description, uid, image, linkedin }) => (
+const PostCard = ({ date, title, description, uid, image, linkedin }) => (
     <PostCardContainer className="BlogPostCard" href={linkedin[0].text} target="_blank">
 
         <PostImage>
