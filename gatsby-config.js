@@ -24,7 +24,7 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
-        resolve: 'gatsby-source-prismic',
+        resolve: 'gatsby-source-prismic-graphql',
         options: {
             repositoryName: 'indiaatberkeley', // (REQUIRED, replace with your own)
             linkResolver: () => post => `/${post.uid}`,
