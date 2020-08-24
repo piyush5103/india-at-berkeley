@@ -10,7 +10,7 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from 'swiper';
 import slide1 from "images/slide1.png";
 import slide2 from "images/slide2.png";
 import slide3 from "images/slide3.png";
@@ -21,15 +21,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/pagination/pagination.scss';
-import 'swiper/components/scrollbar/scrollbar.scss';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
+SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
 const Hero = styled("div")`
   padding-top: 2.5em;
   padding-bottom: 3em;
   margin-bottom: 6em;
- 
+
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
@@ -179,7 +178,6 @@ const RenderBody = ({ home, projects, meta }) => (
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
-        scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log('slide change')}>
         <SwiperSlide>
@@ -207,14 +205,11 @@ const RenderBody = ({ home, projects, meta }) => (
           uid={project.node._meta.uid}
         />
       ))}
-      <WorkAction to={"/work"}>
+      <WorkAction to={"/speakers"}>
         See more speakers <span>&#8594;</span>
       </WorkAction>
     </Section>
-    <Section>
-      {RichText.render(home.about_title)}
-      <About bio={home.about_bio} socialLinks={home.about_links} />
-    </Section>
+
   </>
 )
 

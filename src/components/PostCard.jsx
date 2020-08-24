@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 const PostCardContainer = styled("a")`
     border: 1px solid ${colors.grey200};
-    padding: 3em 2.5em 2.25em 2.5em;
+    padding: 0em 0em 2em 0em;
     border-radius: 3px;
     text-decoration: none;
     color: currentColor;
@@ -42,7 +42,8 @@ const PostCategory = styled("h6")`
 
 const PostTitle = styled("h4")`
     margin: 0;
-    margin-top: 0.5em;
+    margin-top: 1em;
+    text-align: center;
 `
 
 const PostMetas = styled("div")`
@@ -63,11 +64,13 @@ const PostDate = styled("div")`
 `
 const PostImage = styled("div")`
     margin: 0;
+
 `
 
 const PostDescription = styled("div")`
-    margin-top: 1em;
-    
+    margin-top: 0.5em;
+    text-align: center;
+
 
     p:last-of-type {
         margin: 0;
@@ -89,8 +92,8 @@ const PostCardAction = styled("div")`
 `
 
 const PostCard = ({ author, category, date, title, description, uid, image, linkedin }) => (
-    <PostCardContainer className="BlogPostCard" href={linkedin[0].text}>
-        
+    <PostCardContainer className="BlogPostCard" href={linkedin[0].text} target="_blank">
+
         <PostImage>
             <img src={image.url} alt="team" width="100%" />
         </PostImage>
@@ -100,7 +103,7 @@ const PostCard = ({ author, category, date, title, description, uid, image, link
         <PostDescription>
             {RichText.render(description)}
         </PostDescription>
-        
+
 
     </PostCardContainer>
 )
@@ -108,9 +111,9 @@ const PostCard = ({ author, category, date, title, description, uid, image, link
 export default PostCard;
 
 PostCard.propTypes = {
-    
-    
-    
+
+
+
     title: PropTypes.array.isRequired,
     description: PropTypes.array.isRequired,
     uid: PropTypes.string.isRequired,
