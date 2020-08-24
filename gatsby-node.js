@@ -35,12 +35,8 @@ exports.createPages = async ({ graphql, actions }) => {
                         node {
                             post_title
                             post_hero_image
-                            post_hero_annotation
                             post_date
-                            post_category
-                            post_body
                             post_preview_description
-                            post_author
                             _meta {
                                 uid
                             }
