@@ -32,8 +32,8 @@ const Section = styled("div")`
 const RenderBody = ({ home, projects, meta }) => (
   <>
     <Helmet
-            title={`About | Prist, Gatsby & Prismic Starter`}
-            titleTemplate={`%s | About | Prist, Gatsby & Prismic Starter`}
+            title={`About | Speaker Series India`}
+            titleTemplate={`%s | About | Speaker Series India`}
             meta={[
                 {
                     name: `description`,
@@ -41,7 +41,7 @@ const RenderBody = ({ home, projects, meta }) => (
                 },
                 {
                     property: `og:title`,
-                    content: `About | Prist, Gatsby & Prismic Starter`,
+                    content: `About | Speaker Series India`,
                 },
                 {
                     property: `og:description`,
