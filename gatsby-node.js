@@ -52,7 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const postsList = result.data.prismic.allPosts.edges;
 
     const projectTemplate = require.resolve('./src/templates/project.jsx');
-    const postTemplate = require.resolve('./src/templates/post.jsx');
+    
 
     projectsList.forEach(edge => {
         // The uid you assigned in Prismic is the slug!
