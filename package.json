@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-prismic-starter-prist",
+  "name": "iab-sand",
   "private": true,
-  "description": "A starter powered by Gatsby and Prismic to showcase portfolios and blogs.",
+  "description": "",
   "version": "0.1.0",
   "author": "Marguerite Roth | marguerite.io | marguerite.roth@gmail.com",
   "dependencies": {
@@ -41,12 +41,7 @@
     "gatsby-plugin-remove-trailing-slashes": "^2.0.11",
     "prettier": "^1.18.2"
   },
-  "keywords": [
-    "gatsby",
-    "prismic",
-    "blog",
-    "portfolio"
-  ],
+  "keywords": [],
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
