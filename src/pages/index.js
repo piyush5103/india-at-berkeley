@@ -10,25 +10,23 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
-import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from 'swiper';
-import slide1 from "images/slide1.png";
-import slide2 from "images/slide2.png";
-import slide3 from "images/slide3.png";
+import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper"
+import slide1 from "images/slide1.png"
+import slide2 from "images/slide2.png"
+import slide3 from "images/slide3.png"
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react"
 
-// Import Swiper styles
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
+import "swiper/swiper.scss"
+import "swiper/components/navigation/navigation.scss"
+import "swiper/components/pagination/pagination.scss"
 
-SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
+SwiperCore.use([Navigation, Pagination, A11y, Autoplay])
 
 const Hero = styled("div")`
   padding-top: 2.5em;
   padding-bottom: 3em;
   margin-bottom: 6em;
-
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
@@ -179,7 +177,8 @@ const RenderBody = ({ home, projects, meta }) => (
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
         onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}>
+        onSlideChange={() => console.log("slide change")}
+      >
         <SwiperSlide>
           <img src={slide1} alt="slide" width="100%" />
         </SwiperSlide>
@@ -189,10 +188,7 @@ const RenderBody = ({ home, projects, meta }) => (
         <SwiperSlide>
           <img src={slide3} alt="slide" width="100%" />
         </SwiperSlide>
-
-
       </Swiper>
-
     </Hero>
     <Section>
       {projects.map((project, i) => (
@@ -209,7 +205,6 @@ const RenderBody = ({ home, projects, meta }) => (
         See more speakers <span>&#8594;</span>
       </WorkAction>
     </Section>
-
   </>
 )
 
