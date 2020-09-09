@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 
 const ProjectCardContainer = styled(Link)`
     display: grid;
-    grid-template-columns: 4fr 7fr;
+    grid-template-rows: 4fr 4fr;
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
     margin-bottom: 4em;
     transition: all 150ms ease-in-out;
@@ -159,6 +159,9 @@ const ProjectCardImageContainer = styled("div")`
 
 const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
 	<ProjectCardContainer to={`/speakers/${uid}`}>
+		<ProjectCardImageContainer className="ProjectCardImageContainer">
+			<img src={thumbnail.url} alt={title[0].text} />
+		</ProjectCardImageContainer>
 		<ProjectCardContent className="ProjectCardContent">
 			<ProjectCardCategory>
 				{category[0].text}
@@ -173,9 +176,7 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
 				See more <span>&#8594;</span>
 			</ProjectCardAction>
 		</ProjectCardContent>
-		<ProjectCardImageContainer className="ProjectCardImageContainer">
-			<img src={thumbnail.url} alt={title[0].text} />
-		</ProjectCardImageContainer>
+		
 	</ProjectCardContainer>
 )
 

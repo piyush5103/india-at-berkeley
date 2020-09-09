@@ -10,9 +10,11 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
+import PostCard from "components/PostCard";
+
 
 const AboutTitle = styled("h1")`
-	margin-bottom: 1em;
+	margin-bottom: 0.25em;
 `
 
 const Section = styled("div")`
@@ -25,6 +27,26 @@ const Section = styled("div")`
 	&:last-of-type {
 		margin-bottom: 0;
 	}
+`
+
+const BlogTitle = styled("h1")`
+    margin-bottom: 1em;
+`
+
+const BlogGrid = styled("div")`
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2.5em;
+
+    @media(max-width: 1050px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1.5em;
+    }
+
+    @media(max-width: ${dimensions.maxwidthMobile}px) {
+        grid-template-columns: 1fr;
+        grid-gap: 2.5em;
+    }
 `
 
 const RenderBody = ({ home, projects, meta }) => (
@@ -71,8 +93,39 @@ const RenderBody = ({ home, projects, meta }) => (
 		<AboutTitle>About</AboutTitle>
 		{RichText.render(home.about_title)}
 		<About bio={home.about_bio} socialLinks={home.about_links} />
+		
 	</>
 )
+
+
+const Blog = ({ posts }) => (
+    <>
+    
+        
+        
+                    
+                
+            <BlogTitle>
+                Our Team
+            </BlogTitle>
+            <BlogGrid>
+                {posts.map((post, i) => (
+                    <PostCard
+                        key={i}
+                       
+                        
+                        title={post.node.post_title}
+                        date={post.node.post_date}
+                        description={post.node.post_preview_description}
+                        uid={post.node._meta.uid}
+                        image={post.node.post_hero_image}
+                        linkedin={post.node.linkedin}
+                    />
+                ))}
+            </BlogGrid>
+        
+    </>
+);
 
 export default ({ data }) => {
 	//Required check for no data being returned
@@ -80,11 +133,18 @@ export default ({ data }) => {
 	const projects = data.prismic.allProjects.edges
 	const meta = data.site.siteMetadata
 
+
+	const posts = data.prismic.allPosts.edges;
+	if (!posts) return null;
+
+
+
 	if (!doc || !projects) return null
 
 	return (
 		<Layout>
 			<RenderBody home={doc.node} projects={projects} meta={meta} />
+			<Blog posts={posts} meta={meta}/>
 		</Layout>
 	)
 }
@@ -132,6 +192,20 @@ export const query = graphql`
 					}
 				}
 			}
+			allPosts(sortBy: post_date_DESC) {
+                edges {
+                    node {
+                        post_title
+                        post_hero_image
+                        post_date
+                        post_preview_description
+                        linkedin
+                        _meta {
+                            uid
+                        }
+                    }
+                }
+            }
 		}
 		site {
 			siteMetadata {
