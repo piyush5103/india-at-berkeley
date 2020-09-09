@@ -104,11 +104,11 @@ class MyComponent extends React.Component {
         </PostCardContainer>
 
         <Modal
-          width="1100"
+          width={1100}
           isVisible={modalIsVisible}
           toggleModal={this.toggleModal}
         >
-          <h3>Put nt inside!</h3>
+          <h3>{title[0].text}</h3>
 
           <Button onClick={this.toggleModal} type="primary">
             Continue
