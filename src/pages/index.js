@@ -10,6 +10,7 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
+import SpeakerCard from "components/SpeakerCard"
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper"
 import slide1 from "images/slide1.png"
 import slide2 from "images/slide2.png"
@@ -98,6 +99,22 @@ const Section = styled("div")`
   }
 `
 
+const SpeakerGrid = styled("div")`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2.5em;
+
+  @media (max-width: 1050px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5em;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    grid-template-columns: 1fr;
+    grid-gap: 2.5em;
+  }
+`
+
 const WorkAction = styled(Link)`
   font-weight: 600;
   text-decoration: none;
@@ -128,7 +145,7 @@ const WorkAction = styled(Link)`
   }
 `
 
-const RenderBody = ({ home, projects, meta }) => (
+const RenderBody = ({ home, projects, meta, posts }) => (
   <>
     <Helmet
       title={meta.title}
@@ -169,7 +186,6 @@ const RenderBody = ({ home, projects, meta }) => (
       ].concat(meta)}
     />
     <Hero>
-      {/* <>{RichText.render(home.hero_title)}</> */}
       <Swiper
         spaceBetween={50}
         slidesPerView={1}
@@ -180,45 +196,53 @@ const RenderBody = ({ home, projects, meta }) => (
         onSlideChange={() => console.log("slide change")}
       >
         <SwiperSlide>
-          <img src={slide1} alt="slide" width="100%" />
+          <img src={slide1} alt="slide1" width="100%" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide2} alt="slide" width="100%" />
+          <img src={slide2} alt="slide2" width="100%" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src={slide3} alt="slide" width="100%" />
+          <img src={slide3} alt="slide3" width="100%" />
         </SwiperSlide>
       </Swiper>
     </Hero>
+
     <Section>
-      {projects.map((project, i) => (
-        <ProjectCard
-          key={i}
-          category={project.node.project_category}
-          title={project.node.project_title}
-          description={project.node.project_preview_description}
-          thumbnail={project.node.project_preview_thumbnail}
-          uid={project.node._meta.uid}
-        />
-      ))}
-      <WorkAction to={"/speakers"}>
-        See more speakers <span>&#8594;</span>
-      </WorkAction>
+      <SpeakerGrid>
+        {posts.map((post, i) => (
+          <SpeakerCard
+            key={i}
+            title={post.node.post_title}
+            date={post.node.post_date}
+            description={post.node.post_preview_description}
+            uid={post.node._meta.uid}
+            image={post.node.post_hero_image}
+            linkedin={post.node.linkedin}
+          />
+        ))}
+      </SpeakerGrid>
     </Section>
   </>
 )
 
 export default ({ data }) => {
   //Required check for no data being returned
+  const posts = data.prismic.allPosts.edges
   const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
   const projects = data.prismic.allProjects.edges
   const meta = data.site.siteMetadata
 
+  if (!posts) return null
   if (!doc || !projects) return null
 
   return (
     <Layout>
-      <RenderBody home={doc.node} projects={projects} meta={meta} />
+      <RenderBody
+        home={doc.node}
+        projects={projects}
+        meta={meta}
+        posts={posts}
+      />
     </Layout>
   )
 }
@@ -227,6 +251,7 @@ RenderBody.propTypes = {
   home: PropTypes.object.isRequired,
   projects: PropTypes.array.isRequired,
   meta: PropTypes.object.isRequired,
+  posts: PropTypes.array.isRequired,
 }
 
 export const query = graphql`
@@ -260,6 +285,21 @@ export const query = graphql`
             project_preview_thumbnail
             project_category
             project_post_date
+            _meta {
+              uid
+            }
+          }
+        }
+      }
+      allPosts(sortBy: post_date_DESC) {
+        edges {
+          node {
+            post_title
+            post_date
+
+            post_preview_description
+
+            linkedin
             _meta {
               uid
             }
