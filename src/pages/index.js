@@ -192,7 +192,7 @@ const RenderBody = ({ home, projects, meta, posts }) => (
         navigation
         pagination={{ clickable: true }}
         autoplay={{ delay: 3000 }}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSwiper={swiper => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}
       >
         <SwiperSlide>

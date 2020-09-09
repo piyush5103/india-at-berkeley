@@ -29,18 +29,18 @@ const AboutBio = styled("div")`
 
 
 const About = ({ bio, socialLinks }) => (
-    <AboutContainer>
+	<AboutContainer>
 
-        <AboutBio>
-            {RichText.render(bio)}
-        </AboutBio>
+		<AboutBio>
+			{RichText.render(bio)}
+		</AboutBio>
 
-    </AboutContainer>
+	</AboutContainer>
 )
 
 export default About;
 
 About.propTypes = {
-    bio: PropTypes.array.isRequired,
+	bio: PropTypes.array.isRequired,
 
 };

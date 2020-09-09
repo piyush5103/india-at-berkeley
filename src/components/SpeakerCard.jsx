@@ -10,7 +10,7 @@ import { Modal, Button } from "flwww"
 const PostCardContainer = styled("a")`
   border: 1px solid ${colors.grey200};
   padding: 3em 2.5em 2.25em 2.5em;
-  border-radius: 3px;
+	border-radius: 3px;
   text-decoration: none;
   color: currentColor;
   display: flex;
@@ -78,7 +78,7 @@ class MyComponent extends React.Component {
 	}
 
 	toggleModal = () => {
-		this.setState((prevState) => ({
+		this.setState(prevState => ({
 			modalIsVisible: !prevState.modalIsVisible,
 		}))
 	}
@@ -110,7 +110,8 @@ class MyComponent extends React.Component {
 					<h3>{title[0].text}</h3>
 
 					<Button onClick={this.toggleModal} type="primary">
-						Continue</Button>
+						Continue
+          </Button>
 				</Modal>
 			</div>
 		)

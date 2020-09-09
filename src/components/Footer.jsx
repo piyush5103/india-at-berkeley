@@ -49,14 +49,14 @@ const FooterSpooch = styled("img")`
 `
 
 const Footer = () => (
-    <FooterContainer>
-        <Link to="/">
-            <Logo />
-        </Link>
-        <FooterAuthor href="#">
-            Social links here
+	<FooterContainer>
+		<Link to="/">
+			<Logo />
+		</Link>
+		<FooterAuthor href="#">
+			Social links here
         </FooterAuthor>
-    </FooterContainer>
+	</FooterContainer>
 )
 
 export default Footer;
