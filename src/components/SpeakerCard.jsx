@@ -73,50 +73,48 @@ const PostCardAction = styled("div")`
 `
 
 class MyComponent extends React.Component {
-  state = {
-    modalIsVisible: false,
-  }
+	state = {
+		modalIsVisible: false,
+	}
 
-  toggleModal = () => {
-    this.setState((prevState) => ({
-      modalIsVisible: !prevState.modalIsVisible,
-    }))
-  }
+	toggleModal = () => {
+		this.setState((prevState) => ({
+			modalIsVisible: !prevState.modalIsVisible,
+		}))
+	}
 
-  render() {
-    const { modalIsVisible } = this.state
+	render() {
+		const { modalIsVisible } = this.state
+		const { date, title, description } = this.props
 
-    const { date, title, description } = this.props
+		return (
+			<div>
+				<PostCardContainer onClick={this.toggleModal}>
+					<PostTitle>{title[0].text}</PostTitle>
+					<PostDescription>{RichText.render(description)}</PostDescription>
+					<PostCardAction className="PostCardAction">
+						Read more <span>&#8594;</span>
+					</PostCardAction>
+					<PostMetas>
+						<PostDate>
+							<Moment format="MMMM D, YYYY">{date}</Moment>
+						</PostDate>
+					</PostMetas>
+				</PostCardContainer>
 
-    return (
-      <div>
-        <PostCardContainer onClick={this.toggleModal}>
-          <PostTitle>{title[0].text}</PostTitle>
-          <PostDescription>{RichText.render(description)}</PostDescription>
-          <PostCardAction className="PostCardAction">
-            Read more <span>&#8594;</span>
-          </PostCardAction>
-          <PostMetas>
-            <PostDate>
-              <Moment format="MMMM D, YYYY">{date}</Moment>
-            </PostDate>
-          </PostMetas>
-        </PostCardContainer>
+				<Modal
+					width={1100}
+					isVisible={modalIsVisible}
+					toggleModal={this.toggleModal}
+				>
+					<h3>{title[0].text}</h3>
 
-        <Modal
-          width={1100}
-          isVisible={modalIsVisible}
-          toggleModal={this.toggleModal}
-        >
-          <h3>{title[0].text}</h3>
-
-          <Button onClick={this.toggleModal} type="primary">
-            Continue
-          </Button>
-        </Modal>
-      </div>
-    )
-  }
+					<Button onClick={this.toggleModal} type="primary">
+						Continue</Button>
+				</Modal>
+			</div>
+		)
+	}
 }
 
 export default MyComponent
