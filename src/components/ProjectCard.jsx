@@ -176,7 +176,7 @@ const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
 				See more <span>&#8594;</span>
 			</ProjectCardAction>
 		</ProjectCardContent>
-		
+
 	</ProjectCardContainer>
 )
 

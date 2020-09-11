@@ -8,18 +8,11 @@ import PropTypes from "prop-types";
 const AboutContainer = styled("div")`
     padding-top: 1em;
 
-
 `
-
-
-
 
 
 const AboutBio = styled("div")`
     padding-bottom: 3em;
-    
-
-
 
 `
 

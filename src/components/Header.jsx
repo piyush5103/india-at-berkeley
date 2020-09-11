@@ -73,28 +73,28 @@ const HeaderLinks = styled("div")`
 `
 
 const Header = () => (
-  <HeaderContainer>
-    <HeaderContent>
-      <Link to="/">
-        <Logo />
-      </Link>
-      <HeaderLinks>
-        <Link activeClassName="Link--is-active" to="/">
-          Home
+	<HeaderContainer>
+		<HeaderContent>
+			<Link to="/">
+				<Logo />
+			</Link>
+			<HeaderLinks>
+				<Link activeClassName="Link--is-active" to="/">
+					Home
         </Link>
-        <Link activeClassName="Link--is-active" to="/about">
-          About
+				<Link activeClassName="Link--is-active" to="/about">
+					About
         </Link>
-        <Link activeClassName="Link--is-active" to="/speakers">
-          Speakers
+				<Link activeClassName="Link--is-active" to="/speakers">
+					Speakers
         </Link>
-       
-        <Link activeClassName="Link--is-active" to="/">
-          Contact
+
+				<Link activeClassName="Link--is-active" to="/">
+					Contact
         </Link>
-      </HeaderLinks>
-    </HeaderContent>
-  </HeaderContainer>
+			</HeaderLinks>
+		</HeaderContent>
+	</HeaderContainer>
 )
 
 export default Header
