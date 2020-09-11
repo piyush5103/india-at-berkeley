@@ -49,94 +49,93 @@ const BlogGrid = styled("div")`
 `
 
 const RenderBody = ({ home, projects, meta }) => (
-  <>
-    <Helmet
-      title={`About | Speaker Series India`}
-      titleTemplate={`%s | About | Speaker Series India`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: `About | Speaker Series India`,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
+	<>
+		<Helmet
+			title={`About | Speaker Series India`}
+			titleTemplate={`%s | About | Speaker Series India`}
+			meta={[
+				{
+					name: `description`,
+					content: meta.description,
+				},
+				{
+					property: `og:title`,
+					content: `About | Speaker Series India`,
+				},
+				{
+					property: `og:description`,
+					content: meta.description,
+				},
+				{
+					property: `og:type`,
+					content: `website`,
+				},
+				{
+					name: `twitter:card`,
+					content: `summary`,
+				},
+				{
+					name: `twitter:creator`,
+					content: meta.author,
+				},
+				{
+					name: `twitter:title`,
+					content: meta.title,
+				},
+				{
+					name: `twitter:description`,
+					content: meta.description,
+				},
+			].concat(meta)}
+		/>
 
-    <AboutTitle>About</AboutTitle>
-    {RichText.render(home.about_title)}
-    <About bio={home.about_bio} socialLinks={home.about_links} />
-  </>
+		<AboutTitle>About</AboutTitle>
+		{RichText.render(home.about_title)}
+		<About bio={home.about_bio} socialLinks={home.about_links} />
+	</>
 )
 
 const Blog = ({ posts }) => (
-  <>
-    <BlogTitle>Our Team</BlogTitle>
-    <BlogGrid>
-      {posts.map((post, i) => (
-        <PostCard
-          key={i}
-          title={post.node.post_title}
-          date={post.node.post_date}
-          description={post.node.post_preview_description}
-          uid={post.node._meta.uid}
-          image={post.node.post_hero_image}
-          linkedin={post.node.linkedin}
-        />
-      ))}
-    </BlogGrid>
-  </>
+	<>
+		<BlogTitle>Our Team</BlogTitle>
+		<BlogGrid>
+			{posts.map((post, i) => (
+				<PostCard
+					key={i}
+					title={post.node.post_title}
+					date={post.node.post_date}
+					description={post.node.post_preview_description}
+					uid={post.node._meta.uid}
+					image={post.node.post_hero_image}
+					linkedin={post.node.linkedin}
+				/>
+			))}
+		</BlogGrid>
+	</>
 )
 
 export default ({ data }) => {
-  //Required check for no data being returned
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-  const projects = data.prismic.allProjects.edges
-  const meta = data.site.siteMetadata
+	//Required check for no data being returned
+	const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
+	const projects = data.prismic.allProjects.edges
+	const meta = data.site.siteMetadata
 
-  const posts = data.prismic.allPosts.edges
-  if (!posts) return null
+	const posts = data.prismic.allPosts.edges
+	if (!posts) return null
 
-  if (!doc || !projects) return null
-
-  return (
-    <Layout>
-      <RenderBody home={doc.node} projects={projects} meta={meta} />
-      <Blog posts={posts} meta={meta} />
-    </Layout>
-  )
+	if (!doc || !projects) return null
+	return (
+		<Layout>
+			<RenderBody home={doc.node} projects={projects} meta={meta} />
+			<Blog posts={posts} meta={meta} />
+		</Layout>
+	)
 }
 
 RenderBody.propTypes = {
-  home: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
-  meta: PropTypes.object.isRequired,
+	home: PropTypes.object.isRequired,
+	projects: PropTypes.array.isRequired,
+	meta: PropTypes.object.isRequired,
 }
 
 export const query = graphql`

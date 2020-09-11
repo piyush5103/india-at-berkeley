@@ -33,5 +33,4 @@ export default About;
 
 About.propTypes = {
 	bio: PropTypes.array.isRequired,
-
 };

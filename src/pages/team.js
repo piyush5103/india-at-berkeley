@@ -28,75 +28,75 @@ const BlogGrid = styled("div")`
 `
 
 const Blog = ({ posts, meta }) => (
-  <>
-    <Helmet
-      title={`Our Team | Speaker Series India`}
-      titleTemplate={`%s | Our Team | Speaker Series India`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: `Our Team | Speaker Series India`,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
-    <Layout>
-      <BlogTitle>Our Team</BlogTitle>
-      <BlogGrid>
-        {posts.map((post, i) => (
-          <PostCard
-            key={i}
-            title={post.node.post_title}
-            date={post.node.post_date}
-            description={post.node.post_preview_description}
-            uid={post.node._meta.uid}
-            image={post.node.post_hero_image}
-            linkedin={post.node.linkedin}
-          />
-        ))}
-      </BlogGrid>
-    </Layout>
-  </>
+	<>
+		<Helmet
+			title={`Our Team | Speaker Series India`}
+			titleTemplate={`%s | Our Team | Speaker Series India`}
+			meta={[
+				{
+					name: `description`,
+					content: meta.description,
+				},
+				{
+					property: `og:title`,
+					content: `Our Team | Speaker Series India`,
+				},
+				{
+					property: `og:description`,
+					content: meta.description,
+				},
+				{
+					property: `og:type`,
+					content: `website`,
+				},
+				{
+					name: `twitter:card`,
+					content: `summary`,
+				},
+				{
+					name: `twitter:creator`,
+					content: meta.author,
+				},
+				{
+					name: `twitter:title`,
+					content: meta.title,
+				},
+				{
+					name: `twitter:description`,
+					content: meta.description,
+				},
+			].concat(meta)}
+		/>
+		<Layout>
+			<BlogTitle>Our Team</BlogTitle>
+			<BlogGrid>
+				{posts.map((post, i) => (
+					<PostCard
+						key={i}
+						title={post.node.post_title}
+						date={post.node.post_date}
+						description={post.node.post_preview_description}
+						uid={post.node._meta.uid}
+						image={post.node.post_hero_image}
+						linkedin={post.node.linkedin}
+					/>
+				))}
+			</BlogGrid>
+		</Layout>
+	</>
 )
 
 export default ({ data }) => {
-  const posts = data.prismic.allPosts.edges
-  const meta = data.site.siteMetadata
-  if (!posts) return null
+	const posts = data.prismic.allPosts.edges
+	const meta = data.site.siteMetadata
+	if (!posts) return null
 
-  return <Blog posts={posts} meta={meta} />
+	return <Blog posts={posts} meta={meta} />
 }
 
 Blog.propTypes = {
-  posts: PropTypes.array.isRequired,
-  meta: PropTypes.object.isRequired,
+	posts: PropTypes.array.isRequired,
+	meta: PropTypes.object.isRequired,
 }
 
 export const query = graphql`

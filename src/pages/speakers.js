@@ -11,77 +11,77 @@ const WorkTitle = styled("h1")`
 `
 
 const Work = ({ projects, meta }) => (
-    <>
-        <Helmet
-            title={`Speakers | Speaker Series India`}
-            titleTemplate={`%s | Speakers | Speaker Series India`}
-            meta={[
-                {
-                    name: `description`,
-                    content: meta.description,
-                },
-                {
-                    property: `og:title`,
-                    content: `Speakers | Speaker Series India`,
-                },
-                {
-                    property: `og:description`,
-                    content: meta.description,
-                },
-                {
-                    property: `og:type`,
-                    content: `website`,
-                },
-                {
-                    name: `twitter:card`,
-                    content: `summary`,
-                },
-                {
-                    name: `twitter:creator`,
-                    content: meta.author,
-                },
-                {
-                    name: `twitter:title`,
-                    content: meta.title,
-                },
-                {
-                    name: `twitter:description`,
-                    content: meta.description,
-                },
-            ].concat(meta)}
-        />
-        <Layout>
-            <WorkTitle>
-                Speakers
+	<>
+		<Helmet
+			title={`Speakers | Speaker Series India`}
+			titleTemplate={`%s | Speakers | Speaker Series India`}
+			meta={[
+				{
+					name: `description`,
+					content: meta.description,
+				},
+				{
+					property: `og:title`,
+					content: `Speakers | Speaker Series India`,
+				},
+				{
+					property: `og:description`,
+					content: meta.description,
+				},
+				{
+					property: `og:type`,
+					content: `website`,
+				},
+				{
+					name: `twitter:card`,
+					content: `summary`,
+				},
+				{
+					name: `twitter:creator`,
+					content: meta.author,
+				},
+				{
+					name: `twitter:title`,
+					content: meta.title,
+				},
+				{
+					name: `twitter:description`,
+					content: meta.description,
+				},
+			].concat(meta)}
+		/>
+		<Layout>
+			<WorkTitle>
+				Speakers
             </WorkTitle>
-            <>
-                {projects.map((project, i) => (
-                    <ProjectCard
-                        key={i}
-                        category={project.node.project_category}
-                        title={project.node.project_title}
-                        description={project.node.project_preview_description}
-                        thumbnail={project.node.project_preview_thumbnail}
-                        uid={project.node._meta.uid}
-                    />
-                ))}
-            </>
-        </Layout>
-    </>
+			<>
+				{projects.map((project, i) => (
+					<ProjectCard
+						key={i}
+						category={project.node.project_category}
+						title={project.node.project_title}
+						description={project.node.project_preview_description}
+						thumbnail={project.node.project_preview_thumbnail}
+						uid={project.node._meta.uid}
+					/>
+				))}
+			</>
+		</Layout>
+	</>
 );
 
 export default ({ data }) => {
-    const projects = data.prismic.allProjects.edges;
-    const meta = data.site.siteMetadata;
-    if (!projects) return null;
+	const projects = data.prismic.allProjects.edges;
+	const meta = data.site.siteMetadata;
+	if (!projects) return null;
 
-    return (
-        <Work projects={projects} meta={meta}/>
-    )
+	return (
+		<Work projects={projects} meta={meta} />
+	)
 }
 
 Work.propTypes = {
-    projects: PropTypes.array.isRequired,
+	projects: PropTypes.array.isRequired,
 };
 
 export const query = graphql`

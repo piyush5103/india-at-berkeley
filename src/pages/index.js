@@ -9,8 +9,8 @@ import dimensions from "styles/dimensions"
 import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
-import ProjectCard from "components/ProjectCard"
-import SpeakerCard from "components/SpCa"
+import ProjectCard from "components/SpCa"
+import SpeakerCard from "components/SpeakerPost"
 import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper"
 import slide1 from "images/slide1.png"
 import slide2 from "images/slide2.png"
@@ -146,112 +146,111 @@ const WorkAction = styled(Link)`
 `
 
 const RenderBody = ({ home, projects, meta, posts }) => (
-  <>
-    <Helmet
-      title={meta.title}
-      titleTemplate={`%s | ${meta.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: meta.title,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
-    <Hero>
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
-        onSwiper={swiper => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
-      >
-        <SwiperSlide>
-          <img src={slide1} alt="slide1" width="100%" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide2} alt="slide2" width="100%" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide3} alt="slide3" width="100%" />
-        </SwiperSlide>
-      </Swiper>
-    </Hero>
+	<>
+		<Helmet
+			title={meta.title}
+			titleTemplate={`%s | ${meta.title}`}
+			meta={[
+				{
+					name: `description`,
+					content: meta.description,
+				},
+				{
+					property: `og:title`,
+					content: meta.title,
+				},
+				{
+					property: `og:description`,
+					content: meta.description,
+				},
+				{
+					property: `og:type`,
+					content: `website`,
+				},
+				{
+					name: `twitter:card`,
+					content: `summary`,
+				},
+				{
+					name: `twitter:creator`,
+					content: meta.author,
+				},
+				{
+					name: `twitter:title`,
+					content: meta.title,
+				},
+				{
+					name: `twitter:description`,
+					content: meta.description,
+				},
+			].concat(meta)}
+		/>
+		<Hero>
+			<Swiper
+				spaceBetween={50}
+				slidesPerView={1}
+				navigation
+				pagination={{ clickable: true }}
+				autoplay={{ delay: 3000 }}
+				onSlideChange={() => console.log("slide change")}
+			>
+				<SwiperSlide>
+					<img src={slide1} alt="slide1" width="100%" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<img src={slide2} alt="slide2" width="100%" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<img src={slide3} alt="slide3" width="100%" />
+				</SwiperSlide>
+			</Swiper>
+		</Hero>
 
-    <Section>
-      <SpeakerGrid>
-        {posts.map((post, i) => (
-          <SpeakerCard
-            key={i}
-            title={post.node.post_title}
-            date={post.node.post_date}
-            description={post.node.post_preview_description}
-            uid={post.node._meta.uid}
-            image={post.node.post_hero_image}
-            linkedin={post.node.linkedin}
-          />
-        ))}
-      </SpeakerGrid>
-    </Section>
-  </>
+		<Section>
+			<SpeakerGrid>
+				{projects.map((project, i) => (
+					<SpeakerCard
+						key={i}
+						category={project.node.project_category}
+						title={project.node.project_title}
+						description={project.node.project_preview_description}
+						thumbnail={project.node.project_preview_thumbnail}
+						uid={project.node._meta.uid}
+						date={project.node.project_post_date}
+					/>
+				))}
+			</SpeakerGrid>
+		</Section>
+	</>
 )
 
 export default ({ data }) => {
-  //Required check for no data being returned
-  const posts = data.prismic.allPosts.edges
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-  const projects = data.prismic.allProjects.edges
-  const meta = data.site.siteMetadata
+	//Required check for no data being returned
+	const posts = data.prismic.allPosts.edges
+	const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
+	const projects = data.prismic.allProjects.edges
+	const meta = data.site.siteMetadata
 
-  if (!posts) return null
-  if (!doc || !projects) return null
+	if (!posts) return null
+	if (!doc || !projects) return null
 
-  return (
-    <Layout>
-      <RenderBody
-        home={doc.node}
-        projects={projects}
-        meta={meta}
-        posts={posts}
-      />
-    </Layout>
-  )
+	return (
+		<Layout>
+			<RenderBody
+				home={doc.node}
+				projects={projects}
+				meta={meta}
+				posts={posts}
+			/>
+		</Layout>
+	)
 }
 
 RenderBody.propTypes = {
-  home: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
-  meta: PropTypes.object.isRequired,
-  posts: PropTypes.array.isRequired,
+	home: PropTypes.object.isRequired,
+	projects: PropTypes.array.isRequired,
+	meta: PropTypes.object.isRequired,
+	posts: PropTypes.array.isRequired,
 }
 
 export const query = graphql`

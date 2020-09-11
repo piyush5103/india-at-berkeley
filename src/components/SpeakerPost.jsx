@@ -5,10 +5,12 @@ import { RichText } from "prismic-reactjs";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
+import dimensions from "styles/dimensions";
+
 
 const PostCardContainer = styled("a")`
-    border: 1px solid ${colors.grey200};
-    padding: 0em 0em 2em 0em;
+	border: 1px solid ${colors.grey200};
+	
     border-radius: 3px;
     text-decoration: none;
     color: currentColor;
@@ -21,6 +23,8 @@ const PostCardContainer = styled("a")`
         box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
         transition: all 150ms ease-in-out;
         cursor: pointer;
+
+
 
         .PostCardAction {
             color: ${colors.blue500};
@@ -36,14 +40,13 @@ const PostCardContainer = styled("a")`
 `
 
 const PostCategory = styled("h6")`
-    font-weight: 600;
+	font-weight: 600;
     color: ${colors.grey600};
 `
 
-const PostTitle = styled("h4")`
-    margin: 0;
-    margin-top: 1em;
-    text-align: center;
+const PostTitle = styled("h3")`
+    margin-bottom: 0.5em;
+    margin-top: 0.3em;
 `
 
 const PostMetas = styled("div")`
@@ -68,12 +71,19 @@ const PostImage = styled("div")`
 `
 
 const PostDescription = styled("div")`
-    margin-top: 0.5em;
-    text-align: center;
+    
 
 
     p:last-of-type {
         margin: 0;
+	}
+	
+	margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-bottom: 2em;
+
+    @media(max-width:${dimensions.maxwidthTablet}px) {
+        margin-bottom: 2.5em;
     }
 `
 
@@ -88,21 +98,40 @@ const PostCardAction = styled("div")`
         transform: translateX(-8px);
         display: inline-block;
         transition: transform 400ms ease-in-out;
-    }
+	}
+
 `
 
-const PostCard = ({ date, title, description, uid, image, linkedin }) => (
-	<PostCardContainer className="BlogPostCard" href={linkedin[0].text} target="_blank">
+const PostContent = styled('div')`
+	padding: 1em 2.5em 2em 2.5em;
+`
+
+const PostCard = ({ category, title, description, thumbnail, uid, date }) => (
+	<PostCardContainer className="BlogPostCard" target="_blank">
 
 		<PostImage>
-			<img src={image.url} alt="team" width="100%" />
+			<img src={thumbnail.url} alt={title[0].text} height="220px" width="300px" />
+
 		</PostImage>
-		<PostTitle>
-			{title[0].text}
-		</PostTitle>
-		<PostDescription>
-			{RichText.render(description)}
-		</PostDescription>
+		<PostContent>
+			<PostCategory>
+				{category[0].text}
+			</PostCategory>
+			<PostTitle>
+				{title[0].text}
+			</PostTitle>
+			<PostDescription>
+				{RichText.render(description)}
+			</PostDescription>
+			<PostCardAction className="PostCardAction">
+				See more <span>&#8594;</span>
+			</PostCardAction>
+			<PostMetas>
+				<PostDate>
+					<Moment format="MMMM D, YYYY">{date}</Moment>
+				</PostDate>
+			</PostMetas>
+		</PostContent>
 
 
 	</PostCardContainer>
