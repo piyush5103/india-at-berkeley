@@ -6,7 +6,7 @@ import styled from "@emotion/styled";
 import colors from "styles/colors";
 import PropTypes from "prop-types";
 import dimensions from "styles/dimensions";
-
+import Modal from 'react-awesome-modal';
 
 const PostCardContainer = styled("a")`
 	border: 1px solid ${colors.grey200};
@@ -148,7 +148,7 @@ const PostCardAction = styled("div")`
 `
 
 const PostContent = styled('div')`
-	padding: 2em 3em 2em 3em;
+	padding: 2em 2.5em 2em 2.5em;
 	height: 100%;
 	
 	@media(max-width:950px) {
@@ -187,7 +187,95 @@ const PostCard = ({ category, title, description, thumbnail, uid, date }) => (
 	</PostCardContainer>
 )
 
-export default PostCard;
+
+
+class MyComponent extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			visible: false
+		}
+	}
+
+
+	openModal() {
+		this.setState({
+			visible: true
+		});
+	}
+
+	closeModal() {
+		this.setState({
+			visible: false
+		});
+	}
+
+	render() {
+
+		const { category, title, description, thumbnail, uid, date } = this.props
+
+		return (
+			<div>
+				<PostCardContainer className="BlogPostCard" onClick={() => this.openModal()}>
+
+					<PostImage className="PostImage">
+						<img src={thumbnail.url} alt={title[0].text} />
+
+					</PostImage>
+					<PostContent>
+						<PostCategory>
+							{category[0].text}
+						</PostCategory>
+						<PostTitle>
+							{title[0].text}
+						</PostTitle>
+						<PostDescription>
+							{RichText.render(description)}
+						</PostDescription>
+						<PostCardAction className="PostCardAction">
+							See more <span>&#8594;</span>
+						</PostCardAction>
+						<PostMetas>
+							<PostDate>
+								<Moment format="MMMM D, YYYY">{date}</Moment>
+							</PostDate>
+						</PostMetas>
+					</PostContent>
+
+
+				</PostCardContainer>
+
+				<Modal
+					visible={this.state.visible}
+					width="1100"
+					height="600"
+					effect="fadeInUp"
+					onClickAway={() => this.closeModal()}>
+					<div>
+						<PostTitle>{title[0].text}</PostTitle>
+						<PostDescription>{RichText.render(description)}</PostDescription>
+						<p>Other stuff goes here</p>
+						<PostMetas>
+							<PostDate>
+								<Moment format="MMMM D, YYYY">{date}</Moment>
+							</PostDate>
+						</PostMetas>
+						<PostCardAction href="javascript:void(0)" onClick={() => this.closeModal()} className="PostCardAction">
+							Close
+							</PostCardAction>
+
+					</div>
+
+				</Modal>
+
+			</div>
+		)
+	}
+}
+
+export default MyComponent
+
+
 
 PostCard.propTypes = {
 	title: PropTypes.array.isRequired,
