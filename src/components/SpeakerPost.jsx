@@ -15,7 +15,9 @@ const PostCardContainer = styled("a")`
     text-decoration: none;
     color: currentColor;
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	align-self: baseline;
+	
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
     transition: all 150ms ease-in-out;
 
@@ -25,6 +27,10 @@ const PostCardContainer = styled("a")`
         cursor: pointer;
 
 
+		.PostImage::before {
+            opacity: 0.2;
+            transition: all 150ms ease-in-out;
+        }
 
         .PostCardAction {
             color: ${colors.blue500};
@@ -46,7 +52,7 @@ const PostCategory = styled("h6")`
 
 const PostTitle = styled("h3")`
     margin-bottom: 0.5em;
-    margin-top: 0.3em;
+    margin-top: 0.5em;
 `
 
 const PostMetas = styled("div")`
@@ -66,25 +72,64 @@ const PostDate = styled("div")`
     margin: 0;
 `
 const PostImage = styled("div")`
-    margin: 0;
+     background: ${colors.grey200};
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+    position: relative;
+    padding-left: 0em;
+	padding-right: 0em;
+
+    @media(max-width:${dimensions.maxwidthTablet}px) {
+        padding-top: 3em;
+        max-height: 300px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    &:before {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        background: ${colors.blue500};
+        mix-blend-mode: multiply;
+        opacity: 0;
+        transition: all 150ms ease-in-out;
+    }
+
+    img {
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.04);
+
+        @media(max-width:${dimensions.maxwidthTablet}px) {
+            max-width: 300px;
+        }
+    }
 
 `
 
 const PostDescription = styled("div")`
-    
-
-
-    p:last-of-type {
-        margin: 0;
-	}
-	
-	margin-bottom: 0.5em;
+    margin-bottom: 0.5em;
     margin-top: 0.5em;
-    margin-bottom: 2em;
-
+	min-height: 6em;
+	
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 2.5em;
     }
+
+   /* p:last-of-type {
+        margin: 0;
+	}
+	*/
+
+
+
 `
 
 const PostCardAction = styled("div")`
@@ -103,14 +148,19 @@ const PostCardAction = styled("div")`
 `
 
 const PostContent = styled('div')`
-	padding: 1em 2.5em 2em 2.5em;
+	padding: 2em 3em 2em 3em;
+	height: 100%;
+	
+	@media(max-width:950px) {
+        padding: 2em 2.5em 2em 2.5em;
+    }
 `
 
 const PostCard = ({ category, title, description, thumbnail, uid, date }) => (
 	<PostCardContainer className="BlogPostCard" target="_blank">
 
-		<PostImage>
-			<img src={thumbnail.url} alt={title[0].text} height="220px" width="300px" />
+		<PostImage className="PostImage">
+			<img src={thumbnail.url} alt={title[0].text} />
 
 		</PostImage>
 		<PostContent>
