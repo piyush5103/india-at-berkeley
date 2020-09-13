@@ -17,8 +17,8 @@ const HeaderContent = styled("div")`
 
 const HeaderLinks = styled("div")`
   display: grid;
-  grid-template-columns: repeat(6, auto);
-  grid-gap: 2em;
+  grid-template-columns: repeat(5, auto);
+  grid-gap: 3em;
   justify-content: flex-end;
   width: 100%;
   max-width: 200px;
@@ -88,8 +88,10 @@ const Header = () => (
 				<Link activeClassName="Link--is-active" to="/speakers">
 					Speakers
         </Link>
-
-				<Link activeClassName="Link--is-active" to="/">
+				<Link activeClassName="Link--is-active" to="/join">
+					Join
+        </Link>
+				<Link activeClassName="Link--is-active" to="/contact">
 					Contact
         </Link>
 			</HeaderLinks>
