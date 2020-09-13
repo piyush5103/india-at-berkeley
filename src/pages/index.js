@@ -102,7 +102,7 @@ const Section = styled("div")`
 const SpeakerGrid = styled("div")`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2.5em;
+  grid-gap: 2em;
 
   @media (max-width: 1050px) {
     grid-template-columns: repeat(2, 1fr);
