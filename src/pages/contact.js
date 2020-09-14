@@ -119,10 +119,10 @@ const RenderBody = ({ meta }) => (
 		<ContactForm action="https://send.pageclip.co/aLbhEJ7xjNvazOoShaMSbB8joKYq1cqN/Contact" method="post">
 
 			<div style={{ width: "500px" }}>
-				<Input type="text" name="name" placeholder="Name" className="ContactFormInput" />
+				<Input type="text" name="name" placeholder="Name" className="ContactFormInput" required />
 				<Input type="email" name="email" placeholder="Email" className="ContactFormInput" />
 				<Input type="text" name="phone-number" placeholder="Phone Number" className="ContactFormInput" />
-				<TextArea rows={4} placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
+				<TextArea rows={4} name="message" placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
 			</div>
 
 
@@ -136,6 +136,13 @@ const RenderBody = ({ meta }) => (
 
 	</>
 )
+
+
+
+
+
+
+
 
 
 
