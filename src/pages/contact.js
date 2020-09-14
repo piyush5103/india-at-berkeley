@@ -11,17 +11,67 @@ import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import PostCard from "components/PostCard"
+import { Input, TextArea } from "flwww";
 
 const AboutTitle = styled("h1")`
   margin-bottom: 0.25em;
 `
 
+const PostCardAction = styled("button")`
+font-weight: 600;
+    font-size: 0.95em;
+    color: currentColor;
+	transition: all 150ms ease-in-out;
 
+	background: none;
+	color: inherit;
+	border: none;
+	font-family: 'Inter var', sans-serif;
+	padding: 0;
+	cursor: pointer;
+	padding-top: 0.5em;
+
+    span {
+        margin-left: 1em;
+        transform: translateX(-8px);
+        display: inline-block;
+        transition: transform 400ms ease-in-out;
+	}
+
+	&:hover {
+       
+
+            color: ${colors.blue500};
+            transition: all 150ms ease-in-out;
+
+            span {
+                transform: translateX(0px);
+                opacity: 1;
+                transition: transform 150ms ease-in-out;
+            
+        }
+    }
+
+`
 
 const BlogTitle = styled("h3")`
   margin-bottom: 1em;
 `
+const ContactForm = styled("form")`
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 
+	.ContactFormInput{
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+		font-family: 'Inter var', sans-serif;
+
+	}
+
+
+
+`
 
 const RenderBody = ({ meta }) => (
 	<>
@@ -63,7 +113,25 @@ const RenderBody = ({ meta }) => (
 				},
 			].concat(meta)}
 		/>
+		<AboutTitle>Contact</AboutTitle>
+		<BlogTitle>Contact details here</BlogTitle>
 
+		<ContactForm action="https://send.pageclip.co/aLbhEJ7xjNvazOoShaMSbB8joKYq1cqN/Contact" method="post">
+
+			<div style={{ width: "500px" }}>
+				<Input type="text" name="name" placeholder="Name" className="ContactFormInput" />
+				<Input type="email" name="email" placeholder="Email" className="ContactFormInput" />
+				<Input type="text" name="phone-number" placeholder="Phone Number" className="ContactFormInput" />
+				<TextArea rows={4} placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
+			</div>
+
+
+			<PostCardAction className="PostCardAction" type="submit">
+				Submit <span>&#8594;</span>
+			</PostCardAction>
+
+
+		</ContactForm>
 
 
 	</>
@@ -78,8 +146,7 @@ export default ({ data }) => {
 	return (
 		<Layout>
 			<RenderBody meta={meta} />
-			<AboutTitle>Contact</AboutTitle>
-			<BlogTitle>Contact form here</BlogTitle>
+
 		</Layout>
 	)
 }
