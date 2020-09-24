@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import axios from "axios";
 import { Link } from "gatsby"
-import Layout from "components/layout"
+import Layout from "components/Layout"
 import { Input, TextArea } from "flwww";
 
 const MyForm = () => {
