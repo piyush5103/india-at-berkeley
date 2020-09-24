@@ -72,6 +72,7 @@ const ContactForm = styled("form")`
 
 
 `
+//https://medium.com/getform-all-about/building-a-gatsby-contact-form-using-getform-609b1096ba42
 
 const RenderBody = ({ meta }) => (
 	<>
@@ -116,7 +117,7 @@ const RenderBody = ({ meta }) => (
 		<AboutTitle>Contact</AboutTitle>
 		<BlogTitle>Contact details here</BlogTitle>
 
-		<ContactForm action="https://send.pageclip.co/aLbhEJ7xjNvazOoShaMSbB8joKYq1cqN/Contact" method="post">
+		<ContactForm action="https://18880b6b88b56e4be06cd9d78c130a71.m.pipedream.net" method="post">
 
 			<div style={{ width: "500px" }}>
 				<Input type="text" name="name" placeholder="Name" className="ContactFormInput" required />
