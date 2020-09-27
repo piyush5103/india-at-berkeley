@@ -94,9 +94,7 @@ const Header = () => (
 				<Link activeClassName="Link--is-active" to="/contact">
 					Contact
         </Link>
-				<Link activeClassName="Link--is-active" to="/cont">
-					Cont
-        </Link>
+
 			</HeaderLinks>
 		</HeaderContent>
 	</HeaderContainer >

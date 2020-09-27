@@ -43,24 +43,23 @@ const MyForm = () => {
 
 
 				<form id="formElem" onSubmit={handleOnSubmit}>
+					<input type="hidden" name="_captcha" value="false" />
 
 					<div className="form-group" style={{ width: "500px" }}>
-						<Input type="text" name="name" placeholder="Name" className="ContactFormInput" id="name" required="required" />
-						<Input type="email" name="email" placeholder="Email" className="ContactFormInput" id="email" required="required" />
-						<Input type="text" name="phone-number" placeholder="Phone Number" className="ContactFormInput" id="phone-number" required="required" />
-						<TextArea rows={4} name="message" id="message" placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
+						<Input type="text" name="entry.1958416798" placeholder="Name" className="ContactFormInput" id="name" required="required" />
+						<Input type="email" name="entry.124375465" placeholder="Email" className="ContactFormInput" id="email" required="required" />
 					</div>
 
-					<button type="submit" className="btn btn-primary" disabled={serverState.submitting}>
+					<button type="submit" disabled={serverState.submitting}>
 						Submit
            			</button>
-					{serverState.status && (
-						<p className={!serverState.status.ok ? "errorMsg" : ""}>
-							{serverState.status.msg}
-						</p>
-					)}
-				</form>
 
+				</form>
+				{serverState.status && (
+					<p className={!serverState.status.ok ? "errorMsg" : ""}>
+						{serverState.status.msg}
+					</p>
+				)}
 			</div>
 
 		</Layout>
@@ -69,3 +68,5 @@ const MyForm = () => {
 };
 
 export default MyForm;
+// <Input type = "text" name = "phone-number" placeholder = "Phone Number" className = "ContactFormInput" id = "phone-number" required = "required" />
+// <TextArea rows={4} name="message" id="message" placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
