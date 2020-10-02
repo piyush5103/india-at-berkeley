@@ -26,6 +26,9 @@ const PostCardContainer = styled("a")`
         transition: all 150ms ease-in-out;
         cursor: pointer;
 
+		.PostDescription{
+			color: black;
+		}
 
 		.PostImage::before {
             opacity: 0.2;
@@ -118,6 +121,7 @@ const PostDescription = styled("div")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
 	min-height: 6em;
+
 	
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 2.5em;
@@ -229,7 +233,7 @@ class MyComponent extends React.Component {
 						<PostTitle>
 							{title[0].text}
 						</PostTitle>
-						<PostDescription>
+						<PostDescription className="PostDescription">
 							{RichText.render(description)}
 						</PostDescription>
 						<PostCardAction className="PostCardAction">

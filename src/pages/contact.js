@@ -10,7 +10,7 @@ import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
-import PostCard from "components/PostCard"
+import ContactFormElement from "components/ContactForm"
 import { Input, TextArea } from "flwww";
 
 const AboutTitle = styled("h1")`
@@ -57,7 +57,7 @@ font-weight: 600;
 const BlogTitle = styled("h3")`
   margin-bottom: 1em;
 `
-const ContactForm = styled("form")`
+const ContactForm = styled("div")`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -116,17 +116,19 @@ const RenderBody = ({ meta }) => (
 		/>
 		<AboutTitle>Contact</AboutTitle>
 		<BlogTitle>Contact details here</BlogTitle>
+		<ContactForm>
+			<ContactFormElement /></ContactForm>
 
-		<ContactForm action="https://formsubmit.co/pahujapiyush1@gmail.com" method="post">
+		{/* <ContactForm action="https://formsubmit.co/pahujapiyush1@gmail.com" method="post">
 			<input type="hidden" name="_next" value="https://iabgatsbycheck.onrender.com/thanks" />
 
 
 			<input type="hidden" name="_captcha" value="false" />
 			<div style={{ width: "500px" }}>
-				<Input type="text" name="name" placeholder="Name" className="ContactFormInput" required />
-				<Input type="email" name="email" placeholder="Email" className="ContactFormInput" />
-				<Input type="text" name="phone-number" placeholder="Phone Number" className="ContactFormInput" />
-				<TextArea rows={4} name="message" placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
+				<Input type="text" name="Name" placeholder="Name" className="ContactFormInput" required />
+				<Input type="email" name="Email" placeholder="Email" className="ContactFormInput" />
+				<Input type="text" name="Phone Number" placeholder="Phone Number" className="ContactFormInput" />
+				<TextArea rows={4} name="Message" placeholder="Message" style={{ marginTop: "0.5em", marginBottom: "0.5em", fontFamily: "'Inter var', sans-serif" }} />
 			</div>
 
 
@@ -135,7 +137,7 @@ const RenderBody = ({ meta }) => (
 			</PostCardAction>
 
 
-		</ContactForm>
+		</ContactForm> */}
 
 
 	</>
