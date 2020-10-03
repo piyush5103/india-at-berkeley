@@ -91,7 +91,7 @@ class Contact extends React.Component {
 			url: "https://api.airtable.com/v0/appGvTEW3Q4spcppz/Submissions",
 			data: fields,
 			headers: {
-				"Authorization": 'Bearer ${process.env.AIRTABLE_API}',
+				"Authorization": `Bearer ${process.env.AIRTABLE_API}`,
 				"Content-Type": "application/json"
 			}
 		})
