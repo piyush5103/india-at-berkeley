@@ -1,8 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
-import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
@@ -154,22 +153,11 @@ const RenderBody = ({ meta }) => (
 
 export default ({ data }) => {
 	//Required check for no data being returned
-	const meta = data.site.siteMetadata
 
 	return (
-		<Layout>
-			<RenderBody meta={meta} />
 
-		</Layout>
-	)
-}
-
-RenderBody.propTypes = {
-
-	meta: PropTypes.object.isRequired,
-}
-
-export const query = graphql`
+		<StaticQuery
+			query={graphql`
   {
     prismic {
       allHomepages {
@@ -192,20 +180,7 @@ export const query = graphql`
           }
         }
       }
-      allProjects {
-        edges {
-          node {
-            project_title
-            project_preview_description
-            project_preview_thumbnail
-            project_category
-            project_post_date
-            _meta {
-              uid
-            }
-          }
-        }
-      }
+      
       allPosts(sortBy: post_date_DESC) {
         edges {
           node {
@@ -229,4 +204,19 @@ export const query = graphql`
       }
     }
   }
-`
+`}
+			render={data => (
+				<Layout>
+					<RenderBody meta={data.site.siteMetadata} />
+
+				</Layout>
+			)}
+		/>
+
+	)
+}
+
+RenderBody.propTypes = {
+
+	meta: PropTypes.object.isRequired,
+}

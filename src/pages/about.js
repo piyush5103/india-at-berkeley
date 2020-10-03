@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
@@ -114,31 +114,21 @@ const Blog = ({ posts }) => (
 	</>
 )
 
-export default ({ data }) => {
+export default ({ }) => {
 	//Required check for no data being returned
-	const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-	const projects = data.prismic.allProjects.edges
-	const meta = data.site.siteMetadata
+	// const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
+	// const projects = data.prismic.allProjects.edges
+	// const meta = data.site.siteMetadata
 
-	const posts = data.prismic.allPosts.edges
-	if (!posts) return null
+	// const posts = data.prismic.allPosts.edges
+	// if (!posts) return null
 
-	if (!doc || !projects) return null
+	// if (!doc || !projects) return null
+
+
 	return (
-		<Layout>
-			<RenderBody home={doc.node} projects={projects} meta={meta} />
-			<Blog posts={posts} meta={meta} />
-		</Layout>
-	)
-}
-
-RenderBody.propTypes = {
-	home: PropTypes.object.isRequired,
-	projects: PropTypes.array.isRequired,
-	meta: PropTypes.object.isRequired,
-}
-
-export const query = graphql`
+		<StaticQuery
+			query={graphql`
   {
     prismic {
       allHomepages {
@@ -198,4 +188,21 @@ export const query = graphql`
       }
     }
   }
-`
+`}
+			render={data => (
+
+				<Layout>
+					<RenderBody home={data.prismic.allHomepages.edges.slice(0, 1).pop().node} projects={data.prismic.allProjects.edges} meta={data.site.siteMetadata} />
+					<Blog posts={data.prismic.allPosts.edges} meta={data.site.siteMetadata} />
+				</Layout>
+			)}
+		/>
+
+	)
+}
+
+RenderBody.propTypes = {
+	home: PropTypes.object.isRequired,
+	projects: PropTypes.array.isRequired,
+	meta: PropTypes.object.isRequired,
+}

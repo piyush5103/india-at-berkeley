@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
@@ -226,34 +226,13 @@ const RenderBody = ({ home, projects, meta, posts }) => (
 
 export default ({ data }) => {
 	//Required check for no data being returned
-	const posts = data.prismic.allPosts.edges
-	const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-	const projects = data.prismic.allProjects.edges
-	const meta = data.site.siteMetadata
 
-	if (!posts) return null
-	if (!doc || !projects) return null
 
 	return (
-		<Layout>
-			<RenderBody
-				home={doc.node}
-				projects={projects}
-				meta={meta}
-				posts={posts}
-			/>
-		</Layout>
-	)
-}
 
-RenderBody.propTypes = {
-	home: PropTypes.object.isRequired,
-	projects: PropTypes.array.isRequired,
-	meta: PropTypes.object.isRequired,
-	posts: PropTypes.array.isRequired,
-}
 
-export const query = graphql`
+		<StaticQuery
+			query={graphql`
   {
     prismic {
       allHomepages {
@@ -294,10 +273,9 @@ export const query = graphql`
         edges {
           node {
             post_title
+            post_hero_image
             post_date
-
             post_preview_description
-
             linkedin
             _meta {
               uid
@@ -314,4 +292,25 @@ export const query = graphql`
       }
     }
   }
-`
+`}
+			render={data => (
+				<Layout>
+					<RenderBody
+						home={data.prismic.allHomepages.edges.slice(0, 1).pop().node}
+						projects={data.prismic.allProjects.edges}
+						meta={data.site.siteMetadata}
+						posts={data.prismic.allPosts.edges}
+					/>
+				</Layout>
+			)}
+		/>
+
+	)
+}
+
+RenderBody.propTypes = {
+	home: PropTypes.object.isRequired,
+	projects: PropTypes.array.isRequired,
+	meta: PropTypes.object.isRequired,
+	posts: PropTypes.array.isRequired,
+}

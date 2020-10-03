@@ -63,18 +63,14 @@ const PostCardAction = styled("button")`
 
 
 class Contact extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {}
-	}
+	// constructor(props) {
+	// 	super(props)
+	// 	this.state = {}
+	// }
 
 
 	handleSubmit = e => {
-		e.target.name.disabled = true;
-		e.target.email.disabled = true;
-		e.target.phone.disabled = true;
-		e.target.message.disabled = true;
-		e.target.sub.disabled = true;
+
 		const fields = { "fields": { "Name": e.target.name.value, "Email": e.target.email.value, "Phone": e.target.phone.value, "Message": e.target.message.value } }
 		// fetch("https://api.airtable.com/v0/appGvTEW3Q4spcppz/Submissions", {
 		// 	method: "POST",
@@ -97,6 +93,11 @@ class Contact extends React.Component {
 		})
 			.then(r => {
 				message.success('Thank you for submitting. We will get back to you soon.', 10);
+				e.target.name.disabled = true;
+				e.target.email.disabled = true;
+				e.target.phone.disabled = true;
+				e.target.message.disabled = true;
+				e.target.sub.disabled = true;
 			})
 			.catch(r => {
 				message.error('An error occurred. Please try again later.', 10);
@@ -110,7 +111,7 @@ class Contact extends React.Component {
 
 
 
-			<ConForm id="formElem" onSubmit={this.handleSubmit} >
+			<ConForm id="formElem" onSubmit={this.handleSubmit}>
 				<input type="hidden" name="_captcha" value="false" />
 
 				<div className="form-group" style={{ width: "70%", minWidth: "350px" }}>
@@ -122,7 +123,7 @@ class Contact extends React.Component {
 
 
 
-				<PostCardAction name="sub" className="PostCardAction" type="submit">
+				<PostCardAction name="sub" className="PostCardAction" type="submit" >
 					Submit <span>&#8594;</span>
 				</PostCardAction>
 
