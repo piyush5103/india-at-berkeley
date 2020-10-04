@@ -9,13 +9,16 @@ import dimensions from "styles/dimensions"
 
 
 const WorkTitle = styled("h1")`
-	margin-bottom: 1em;
+	margin-bottom: 1em;  font-family: 'Inter var', sans-serif;
+
 `
 
 const SpeakerGrid = styled("div")`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em;
+    font-family: 'Inter var', sans-serif;
+
 
   @media (max-width: 1050px) {
 	grid-template-columns: repeat(2, 1fr);
@@ -33,8 +36,8 @@ const SpeakerGrid = styled("div")`
 const Work = ({ projects, meta }) => (
 	<>
 		<Helmet
-			title={`Speakers | Speaker Series India`}
-			titleTemplate={`%s | Speakers | Speaker Series India`}
+			title={`Speakers | Speaker Series: India@Berkeley`}
+			titleTemplate={`%s | Speakers | Speaker Series: India@Berkeley`}
 			meta={[
 				{
 					name: `description`,
@@ -42,7 +45,7 @@ const Work = ({ projects, meta }) => (
 				},
 				{
 					property: `og:title`,
-					content: `Speakers | Speaker Series India`,
+					content: `Speakers | Speaker Series: India@Berkeley`,
 				},
 				{
 					property: `og:description`,

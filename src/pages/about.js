@@ -14,10 +14,14 @@ import PostCard from "components/PostCard"
 
 const AboutTitle = styled("h1")`
   margin-bottom: 0.25em;
+    font-family: 'Inter var', sans-serif;
+
 `
 
 const Section = styled("div")`
   margin-bottom: 10em;
+    font-family: 'Inter var', sans-serif;
+
   display: flex;
   flex-direction: column;
   @media (max-width: ${dimensions.maxwidthTablet}px) {
@@ -30,9 +34,13 @@ const Section = styled("div")`
 
 const BlogTitle = styled("h1")`
   margin-bottom: 1em;
+    font-family: 'Inter var', sans-serif;
+
 `
 
 const BlogGrid = styled("div")`
+  font-family: 'Inter var', sans-serif;
+
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2.5em;
@@ -51,8 +59,8 @@ const BlogGrid = styled("div")`
 const RenderBody = ({ home, projects, meta }) => (
 	<>
 		<Helmet
-			title={`About | Speaker Series India`}
-			titleTemplate={`%s | About | Speaker Series India`}
+			title={`About | Speaker Series: India@Berkeley`}
+			titleTemplate={`%s | About | Speaker Series: India@Berkeley`}
 			meta={[
 				{
 					name: `description`,
@@ -60,7 +68,7 @@ const RenderBody = ({ home, projects, meta }) => (
 				},
 				{
 					property: `og:title`,
-					content: `About | Speaker Series India`,
+					content: `About | Speaker Series: India@Berkeley`,
 				},
 				{
 					property: `og:description`,

@@ -103,6 +103,8 @@ const SpeakerGrid = styled("div")`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 2em;
+    font-family: 'Inter var', sans-serif;
+
 
   @media (max-width: 1050px) {
     grid-template-columns: repeat(2, 1fr);
@@ -121,15 +123,16 @@ const WorkAction = styled(Link)`
   color: currentColor;
   transition: all 150ms ease-in-out;
   margin-left: auto;
+  font-family: 'Inter var', sans-serif;
 
-margin-top: 2em;
+margin-top: 4em;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
-    margin: 0 auto;
+    
   }
 
   span {
-    margin-left: 1em;
+	margin-left: 1em;
     transform: translateX(-8px);
     display: inline-block;
     transition: transform 400ms ease-in-out;

@@ -6,13 +6,17 @@ import { RichText } from "prismic-reactjs";
 import PropTypes from "prop-types";
 
 const AboutContainer = styled("div")`
-    padding-top: 1em;
+	padding-top: 1em;
+	  font-family: 'Inter var', sans-serif;
+
 
 `
 
 
 const AboutBio = styled("div")`
-    padding-bottom: 3em;
+	padding-bottom: 3em;
+	  font-family: 'Inter var', sans-serif;
+
 
 `
 

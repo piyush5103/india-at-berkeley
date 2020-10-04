@@ -19,17 +19,22 @@ const { Step } = Steps;
 
 const AboutTitle = styled("h1")`
   margin-bottom: 0.25em;
+    font-family: 'Inter var', sans-serif;
+
 `
 
 
 
 const BlogTitle = styled("h3")`
   margin-bottom: 2em;
+    font-family: 'Inter var', sans-serif;
+
   text-align: center;
 `
 const TimelineTitle = styled("h4")`
   margin-left: 1em;
   margin-right: 1em;
+  
   font-weight: bold;
   font-family: 'Inter var', sans-serif;
   font-size: 20px;
@@ -47,8 +52,8 @@ const TimelineContent = styled("h6")`
 const RenderBody = ({ meta }) => (
 	<>
 		<Helmet
-			title={`Join | Speaker Series India`}
-			titleTemplate={`%s | Join | Speaker Series India`}
+			title={`Join | Speaker Series: India@Berkeley`}
+			titleTemplate={`%s | Join | Speaker Series: India@Berkeley`}
 			meta={[
 				{
 					name: `description`,
@@ -56,7 +61,7 @@ const RenderBody = ({ meta }) => (
 				},
 				{
 					property: `og:title`,
-					content: `Join | Speaker Series India`,
+					content: `Join | Speaker Series: India@Berkeley`,
 				},
 				{
 					property: `og:description`,
@@ -86,6 +91,7 @@ const RenderBody = ({ meta }) => (
 		/>
 		<AboutTitle>Join</AboutTitle>
 		<BlogTitle>Recruitment Timeline</BlogTitle>
+
 		<Timeline mode={"alternate"}>
 
 			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>

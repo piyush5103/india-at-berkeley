@@ -57,7 +57,8 @@ const PostCategory = styled("h6")`
 
 const PostTitle = styled("h3")`
     margin-bottom: 0.5em;
-    margin-top: 0.5em;
+	margin-top: 0.5em;
+	font-weight: 600;
 `
 
 const PostMetas = styled("div")`
@@ -191,7 +192,7 @@ padding-right: 1em;
 	@media (max-width: ${dimensions.maxwidthTablet}px) {
    width: 100%;
    max-height: 50%;
-   margin-top: 0.5em;
+   margin-top: 1.5em;
   }
 `
 

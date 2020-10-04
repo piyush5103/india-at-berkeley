@@ -16,6 +16,7 @@ const PostCardContainer = styled("a")`
     flex-direction: column;
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
     transition: all 150ms ease-in-out;
+  font-family: 'Inter var', sans-serif;
 
     &:hover {
         box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
@@ -47,8 +48,9 @@ const PostCategory = styled("h6")`
 
 const PostTitle = styled("h4")`
     margin: 0;
-    margin-top: 1em;
-    text-align: center;
+    margin-top: 1.5em;
+	text-align: center;
+	font-weight: 600;
 `
 
 const PostMetas = styled("div")`

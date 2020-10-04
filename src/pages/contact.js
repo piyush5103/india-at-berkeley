@@ -14,6 +14,8 @@ import { Input, TextArea } from "flwww";
 
 const AboutTitle = styled("h1")`
   margin-bottom: 0.25em;
+    font-family: 'Inter var', sans-serif;
+
 `
 
 const PostCardAction = styled("button")`
@@ -55,11 +57,14 @@ font-weight: 600;
 
 const BlogTitle = styled("h3")`
   margin-bottom: 1em;
+    font-family: 'Inter var', sans-serif;
+
 `
 const ContactForm = styled("div")`
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+  font-family: 'Inter var', sans-serif;
 
 	.ContactFormInput{
 		margin-top: 0.5em;
@@ -76,8 +81,8 @@ const ContactForm = styled("div")`
 const RenderBody = ({ meta }) => (
 	<>
 		<Helmet
-			title={`Contact | Speaker Series India`}
-			titleTemplate={`%s | Contact | Speaker Series India`}
+			title={`Contact | Speaker Series: India@Berkeley`}
+			titleTemplate={`%s | Contact | Speaker Series: India@Berkeley`}
 			meta={[
 				{
 					name: `description`,
@@ -85,7 +90,7 @@ const RenderBody = ({ meta }) => (
 				},
 				{
 					property: `og:title`,
-					content: `Contact | Speaker Series India`,
+					content: `Contact | Speaker Series: India@Berkeley`,
 				},
 				{
 					property: `og:description`,
@@ -114,7 +119,7 @@ const RenderBody = ({ meta }) => (
 			].concat(meta)}
 		/>
 		<AboutTitle>Contact</AboutTitle>
-		<BlogTitle>Contact us at <a href="mailto:indiaatberkeley@berkeley.edu">indiaatberkeley@berkeley.edu</a> or use the form below.</BlogTitle>
+		<BlogTitle>Contact us at <a href="mailto:indiaconference@berkeley.edu">indiaconference@berkeley.edu</a> or use the form below.</BlogTitle>
 		<ContactForm>
 			<ContactFormElement /></ContactForm>
 

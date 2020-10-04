@@ -3,7 +3,10 @@ import { Link } from "gatsby";
 import styled from "@emotion/styled";
 import colors from "styles/colors";
 import Logo from "components/_ui/Logo";
-import spooch from "images/oscar-icon.png"
+import spooch from "images/oscar-icon.png";
+import { FaFacebookF } from 'react-icons/fa';
+import { GrInstagram, GrFacebookOption } from 'react-icons/gr';
+
 
 const FooterContainer = styled("div")`
     padding-top: 3.75em;
@@ -11,6 +14,7 @@ const FooterContainer = styled("div")`
     display: flex;
     flex-direction: column;
     align-items: center;
+  font-family: 'Inter var', sans-serif;
 
     svg {
         max-width: 50px;
@@ -18,29 +22,25 @@ const FooterContainer = styled("div")`
 `
 
 const FooterAuthor = styled("a")`
-    font-size: 0.75em;
-    color: ${colors.grey700};
+    font-size: 1.5em;
+    color: ${colors.grey800};
     display: flex;
-    flex-direction: column;
+	flex-direction: column;
+	  font-family: 'Inter var', sans-serif;
+
     align-items: center;
     text-decoration: none;
-    margin-top: 1.5em;
+    margin-top: 0.75em;
+	margin-right: 0.25em;
+margin-left: 0.25em;
 
      &:hover {
          color: ${colors.blue900};
 
-        .FooterSpooch {
-            animation-name: rotate;
-            animation-duration: 1.5s;
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
+        
     }
 
-    @keyframes rotate {
-        from {transform: rotate(0deg);}
-        to {transform: rotate(360deg);}
-    }
+    
 `
 
 const FooterSpooch = styled("img")`
@@ -53,9 +53,14 @@ const Footer = () => (
 		<Link to="/">
 			<Logo />
 		</Link>
-		<FooterAuthor href="#">
-			Social links here
-        </FooterAuthor>
+		<div style={{ display: "flex", flexDirection: "row" }}>
+			<FooterAuthor href="https://www.facebook.com/SSIBerkeley/" target="_blank">
+				<GrFacebookOption />
+			</FooterAuthor>
+			<FooterAuthor href="https://www.instagram.com/speakerseries_cal/" target="_blank">
+				<GrInstagram />
+			</FooterAuthor>
+		</div>
 	</FooterContainer>
 )
 

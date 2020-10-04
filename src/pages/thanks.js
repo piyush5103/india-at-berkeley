@@ -15,7 +15,9 @@ import { Input, TextArea } from "flwww";
 
 const AboutTitle = styled("h1")`
   margin-bottom: 0.25em;
-`
+  font-family: 'Inter var', sans-serif;
+
+  `
 
 const PostCardAction = styled("button")`
 font-weight: 600;
@@ -77,8 +79,8 @@ const ContactForm = styled("form")`
 const RenderBody = ({ meta }) => (
 	<>
 		<Helmet
-			title={`Contact | Speaker Series India`}
-			titleTemplate={`%s | Contact | Speaker Series India`}
+			title={`Contact | Speaker Series: India@Berkeley`}
+			titleTemplate={`%s | Contact | Speaker Series: India@Berkeley`}
 			meta={[
 				{
 					name: `description`,
@@ -86,7 +88,7 @@ const RenderBody = ({ meta }) => (
 				},
 				{
 					property: `og:title`,
-					content: `Contact | Speaker Series India`,
+					content: `Contact | Speaker Series: India@Berkeley`,
 				},
 				{
 					property: `og:description`,
