@@ -9,7 +9,7 @@ import dimensions from "styles/dimensions"
 
 
 const WorkTitle = styled("h1")`
-    margin-bottom: 1em;
+	margin-bottom: 1em;
 `
 
 const SpeakerGrid = styled("div")`
@@ -18,15 +18,16 @@ const SpeakerGrid = styled("div")`
   grid-gap: 2em;
 
   @media (max-width: 1050px) {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1.5em;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 1.5em;
   }
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
-    grid-template-columns: 1fr;
-    grid-gap: 2.5em;
+	grid-template-columns: 1fr;
+	grid-gap: 2.5em;
   }
 `
+
 
 
 const Work = ({ projects, meta }) => (
@@ -72,7 +73,7 @@ const Work = ({ projects, meta }) => (
 		<Layout>
 			<WorkTitle>
 				Speakers
-            </WorkTitle>
+			</WorkTitle>
 
 
 			<SpeakerGrid>
@@ -82,6 +83,10 @@ const Work = ({ projects, meta }) => (
 						category={project.node.project_category}
 						title={project.node.project_title}
 						description={project.node.project_preview_description}
+						body={project.node.project_description}
+						linkurl={project.node.project_linkurl}
+						linktext={project.node.project_linktext}
+						register={project.node.project_register}
 						thumbnail={project.node.project_preview_thumbnail}
 						uid={project.node._meta.uid}
 						date={project.node.project_post_date}
@@ -107,30 +112,34 @@ Work.propTypes = {
 };
 
 export const query = graphql`
-    {
-        prismic {
-            allProjects {
-                edges {
-                    node {
-                        project_title
-                        project_preview_description
-                        project_preview_thumbnail
-                        project_category
-                        project_post_date
-                        _meta {
-                            uid
-                        }
-                    }
-                }
-            }
-        }
-        site {
-            siteMetadata {
-                title
-                description
-                author
-            }
-        }
-    }
+	{
+		prismic {
+			allProjects {
+				edges {
+					node {
+						project_title
+						project_preview_description
+						project_preview_thumbnail
+						project_category
+						project_description
+						project_register
+						project_linktext
+						project_linkurl
+						project_post_date
+						_meta {
+							uid
+						}
+					}
+				}
+			}
+		}
+		site {
+			siteMetadata {
+				title
+				description
+				author
+			}
+		}
+	}
 `
 

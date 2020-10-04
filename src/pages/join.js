@@ -11,6 +11,11 @@ import About from "components/About"
 import Layout from "components/Layout"
 import ProjectCard from "components/ProjectCard"
 import PostCard from "components/PostCard"
+import { Timeline, Steps } from 'antd';
+import { AiTwotoneRightCircle } from 'react-icons/ai'
+
+const { Step } = Steps;
+
 
 const AboutTitle = styled("h1")`
   margin-bottom: 0.25em;
@@ -19,8 +24,24 @@ const AboutTitle = styled("h1")`
 
 
 const BlogTitle = styled("h3")`
-  margin-bottom: 1em;
+  margin-bottom: 2em;
+  text-align: center;
 `
+const TimelineTitle = styled("h4")`
+  margin-left: 1em;
+  margin-right: 1em;
+  font-weight: bold;
+  font-family: 'Inter var', sans-serif;
+  font-size: 20px;
+`
+
+const TimelineContent = styled("h6")`
+    margin-left: 20px;
+  margin-right: 20px;
+  font-family: 'Inter var', sans-serif;
+  font-size:16px;
+`
+
 
 
 const RenderBody = ({ meta }) => (
@@ -63,7 +84,36 @@ const RenderBody = ({ meta }) => (
 				},
 			].concat(meta)}
 		/>
+		<AboutTitle>Join</AboutTitle>
+		<BlogTitle>Recruitment Timeline</BlogTitle>
+		<Timeline mode={"alternate"}>
 
+			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
+				<TimelineTitle>breuiveuir</TimelineTitle>
+				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
+			</Timeline.Item>
+
+			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
+				<TimelineTitle>breuiveuir</TimelineTitle>
+				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
+			</Timeline.Item>
+
+			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
+				<TimelineTitle>breuiveuir</TimelineTitle>
+				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
+			</Timeline.Item>
+
+			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
+				<TimelineTitle>breuiveuir</TimelineTitle>
+				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
+			</Timeline.Item>
+
+			<Timeline.Item dot={<AiTwotoneRightCircle style={{ fontSize: 16, color: "black" }} />}>
+				<TimelineTitle>breuiveuir</TimelineTitle>
+				<TimelineContent>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </TimelineContent>
+			</Timeline.Item>
+
+		</Timeline>
 
 
 	</>
@@ -78,8 +128,7 @@ export default ({ data }) => {
 	return (
 		<Layout>
 			<RenderBody meta={meta} />
-			<AboutTitle>Join</AboutTitle>
-			<BlogTitle>Timeline here</BlogTitle>
+
 		</Layout>
 	)
 }

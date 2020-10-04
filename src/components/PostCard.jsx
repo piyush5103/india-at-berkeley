@@ -22,6 +22,11 @@ const PostCardContainer = styled("a")`
         transition: all 150ms ease-in-out;
         cursor: pointer;
 
+
+		.PostDescription{
+			color: black;
+		}
+
         .PostCardAction {
             color: ${colors.blue500};
             transition: all 150ms ease-in-out;
@@ -100,7 +105,7 @@ const PostCard = ({ date, title, description, uid, image, linkedin }) => (
 		<PostTitle>
 			{title[0].text}
 		</PostTitle>
-		<PostDescription>
+		<PostDescription className="PostDescription">
 			{RichText.render(description)}
 		</PostDescription>
 

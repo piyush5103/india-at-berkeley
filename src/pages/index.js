@@ -25,9 +25,9 @@ import "swiper/components/pagination/pagination.scss"
 SwiperCore.use([Navigation, Pagination, A11y, Autoplay])
 
 const Hero = styled("div")`
-  padding-top: 2.5em;
+  padding-top: 0em;
   padding-bottom: 3em;
-  margin-bottom: 6em;
+  margin-bottom: 4em;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
@@ -192,7 +192,7 @@ const RenderBody = ({ home, projects, meta, posts }) => (
 				navigation
 				pagination={{ clickable: true }}
 				autoplay={{ delay: 3000 }}
-				onSlideChange={() => console.log("slide change")}
+
 			>
 				<SwiperSlide>
 					<img src={slide1} alt="slide1" width="100%" />
@@ -214,12 +214,19 @@ const RenderBody = ({ home, projects, meta, posts }) => (
 						category={project.node.project_category}
 						title={project.node.project_title}
 						description={project.node.project_preview_description}
+						body={project.node.project_description}
+						linkurl={project.node.project_linkurl}
+						linktext={project.node.project_linktext}
+						register={project.node.project_register}
 						thumbnail={project.node.project_preview_thumbnail}
 						uid={project.node._meta.uid}
 						date={project.node.project_post_date}
 					/>
 				))}
 			</SpeakerGrid>
+			<WorkAction to={"/speakers"}>
+				See more speakers <span>&#8594;</span>
+			</WorkAction>
 		</Section>
 	</>
 )
@@ -261,7 +268,11 @@ export default ({ data }) => {
             project_title
             project_preview_description
             project_preview_thumbnail
-            project_category
+			project_category
+			project_description
+			project_linkurl
+			project_linktext
+			project_register
             project_post_date
             _meta {
               uid

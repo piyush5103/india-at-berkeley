@@ -114,7 +114,7 @@ const RenderBody = ({ meta }) => (
 			].concat(meta)}
 		/>
 		<AboutTitle>Contact</AboutTitle>
-		<BlogTitle>Contact details here</BlogTitle>
+		<BlogTitle>Contact us at <a href="mailto:indiaatberkeley@berkeley.edu">indiaatberkeley@berkeley.edu</a> or use the form below.</BlogTitle>
 		<ContactForm>
 			<ContactFormElement /></ContactForm>
 
