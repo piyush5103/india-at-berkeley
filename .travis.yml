@@ -13,7 +13,6 @@ cache:
 
 before_script:
   - "npm i -g gatsby-cli"
-  - "yarn"
 
 script:
   - gatsby build
