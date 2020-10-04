@@ -7,11 +7,11 @@
   "dependencies": {
     "@emotion/core": "^10.0.10",
     "@emotion/styled": "^10.0.12",
-    "@prismicio/gatsby-source-prismic-graphql": "3.6.11",
     "antd": "^4.6.6",
     "babel-plugin-remove-graphql-queries": "2.9.12",
+    "@prismicio/gatsby-source-prismic-graphql": "3.6.11",
     "flwww": "2.0.15",
-    "gatsby": "^2.12.0",
+    "gatsby": "2.24.10",
     "gatsby-image": "^2.2.20",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-catch-links": "^2.0.12",
@@ -51,7 +51,7 @@
   "keywords": [],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
