@@ -122,6 +122,8 @@ const WorkAction = styled(Link)`
   transition: all 150ms ease-in-out;
   margin-left: auto;
 
+margin-top: 2em;
+
   @media (max-width: ${dimensions.maxwidthTablet}px) {
     margin: 0 auto;
   }

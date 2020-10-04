@@ -155,8 +155,12 @@ const PostCardAction = styled("div")`
 
 const ModalContent = styled("div")`
 	padding: 3em 3em 3em 3em;
-	display: grid;
-  grid-template-columns: repeat(2, 1fr);
+	display:flex;
+	flex-direction: row;
+  @media (max-width: ${dimensions.maxwidthTablet}px) {
+   flex-direction: column-reverse;
+   padding: 2.75em 2em 2em 2em;
+  }
 `
 
 const PostContent = styled('div')`
@@ -165,11 +169,37 @@ const PostContent = styled('div')`
 	
 	@media(max-width:950px) {
         padding: 2em 2.5em 2em 2.5em;
-    }
+	}
+	
 `
 
 const ModalImage = styled('div')`
+display: flex;
+flex-direction: column;
+align-self: center;
+
 	
+	@media (min-width: ${dimensions.maxwidthTablet}px) {
+   
+   width: 50%;
+  }
+`
+
+const ModalText = styled('div')`
+width: 50%; 
+padding-right: 1em;
+	@media (max-width: ${dimensions.maxwidthTablet}px) {
+   width: 100%;
+   max-height: 50%;
+   margin-top: 0.5em;
+  }
+`
+
+const ModalImageTag = styled('img')`
+max-width: 100%;
+	@media (max-width: ${dimensions.maxwidthTablet}px) {
+   height: 34vh;
+  }
 `
 
 const PostCard = ({ category, title, description, thumbnail, uid, date }) => (
@@ -264,11 +294,11 @@ class MyComponent extends React.Component {
 				<Modal
 					visible={this.state.visible}
 					width="80%"
-					height="600"
+					height="98%"
 					effect="fadeInUp"
 					onClickAway={() => this.closeModal()}>
 					<ModalContent>
-						<div>
+						<ModalText>
 							<PostCategory>
 								{category[0].text}
 							</PostCategory>
@@ -280,17 +310,17 @@ class MyComponent extends React.Component {
 									<Moment format="MMMM D, YYYY">{date}</Moment>
 								</PostDate>
 							</PostMetas>
-						</div>
+						</ModalText>
 						<ModalImage>
-							<img style={{ maxWidth: '100%' }} src={thumbnail.url} alt={title[0].text} />
-							<div style={{ display: 'flex', justifyContent: 'space-between' }}>
-								<a href={register[0].text} target="_blank">
-									<Button className="Button--secondary" width="40%" >
+							<ModalImageTag src={thumbnail.url} alt={title[0].text} />
+							<div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '1.5em' }}>
+								<a href={register[0].text} target="_blank" style={{ width: '47%' }}>
+									<Button className="Button--secondary" style={{ width: "100%" }}>
 										Register
 								</Button>
 								</a>
-								<a href={linkurl[0].text} target="_blank">
-									<Button className="Button--secondary" width="40%">
+								<a href={linkurl[0].text} target="_blank" style={{ width: "47% " }}>
+									< Button className="Button--secondary" style={{ width: "100%" }} >
 										{linktext[0].text}
 									</Button>
 								</a>
@@ -301,7 +331,7 @@ class MyComponent extends React.Component {
 
 				</Modal>
 
-			</div>
+			</div >
 		)
 	}
 }
