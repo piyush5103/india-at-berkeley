@@ -23,7 +23,7 @@ const ProjectHeroContainer = styled("div")`
     }
 `
 
-const ProjectTitle = styled("div") `
+const ProjectTitle = styled("div")`
     max-width: 550px;
     margin: 0 auto;
     text-align: center;
@@ -51,78 +51,78 @@ const WorkLink = styled(Link)`
 
 
 const Project = ({ project, meta }) => {
-    return (
-        <>
-            <Helmet
-                title={`${project.project_title[0].text} | Speaker Series India`}
-                titleTemplate={`%s | ${meta.title}`}
-                meta={[
-                    {
-                        name: `description`,
-                        content: meta.description,
-                    },
-                    {
-                        property: `og:title`,
-                        content: `${project.project_title[0].text} | Speaker Series India`,
-                    },
-                    {
-                        property: `og:description`,
-                        content: meta.description,
-                    },
-                    {
-                        property: `og:type`,
-                        content: `website`,
-                    },
-                    {
-                        name: `twitter:card`,
-                        content: `summary`,
-                    },
-                    {
-                        name: `twitter:creator`,
-                        content: meta.author,
-                    },
-                    {
-                        name: `twitter:title`,
-                        content: meta.title,
-                    },
-                    {
-                        name: `twitter:description`,
-                        content: meta.description,
-                    },
-                ].concat(meta)}
-            />
-            <Layout>
-                <ProjectTitle>
-                    {RichText.render(project.project_title)}
-                </ProjectTitle>
-                {project.project_hero_image && (
-                    <ProjectHeroContainer>
-                        <img src={project.project_hero_image.url} alt="speaker" />
-                    </ProjectHeroContainer>
-                )}
-                <ProjectBody>
-                    {RichText.render(project.project_description)}
-                    <WorkLink to={"/speakers"}>
-                        <Button className="Button--secondary">
-                            See more speakers
+	return (
+		<>
+			<Helmet
+				title={`${project.project_title[0].text} | Speaker Series: India@Berkeley`}
+				titleTemplate={`%s | ${meta.title}`}
+				meta={[
+					{
+						name: `description`,
+						content: meta.description,
+					},
+					{
+						property: `og:title`,
+						content: `${project.project_title[0].text} | Speaker Series: India@Berkeley`,
+					},
+					{
+						property: `og:description`,
+						content: meta.description,
+					},
+					{
+						property: `og:type`,
+						content: `website`,
+					},
+					{
+						name: `twitter:card`,
+						content: `summary`,
+					},
+					{
+						name: `twitter:creator`,
+						content: meta.author,
+					},
+					{
+						name: `twitter:title`,
+						content: meta.title,
+					},
+					{
+						name: `twitter:description`,
+						content: meta.description,
+					},
+				].concat(meta)}
+			/>
+			<Layout>
+				<ProjectTitle>
+					{RichText.render(project.project_title)}
+				</ProjectTitle>
+				{project.project_hero_image && (
+					<ProjectHeroContainer>
+						<img src={project.project_hero_image.url} alt="speaker" />
+					</ProjectHeroContainer>
+				)}
+				<ProjectBody>
+					{RichText.render(project.project_description)}
+					<WorkLink to={"/speakers"}>
+						<Button className="Button--secondary">
+							See more speakers
                         </Button>
-                    </WorkLink>
-                </ProjectBody>
-            </Layout>
-        </>
-    )
+					</WorkLink>
+				</ProjectBody>
+			</Layout>
+		</>
+	)
 }
 
 export default ({ data }) => {
-    const projectContent = data.prismic.allProjects.edges[0].node;
-    const meta = data.site.siteMetadata;
-    return (
-        <Project project={projectContent} meta={meta}/>
-    )
+	const projectContent = data.prismic.allProjects.edges[0].node;
+	const meta = data.site.siteMetadata;
+	return (
+		<Project project={projectContent} meta={meta} />
+	)
 }
 
 Project.propTypes = {
-    project: PropTypes.object.isRequired,
+	project: PropTypes.object.isRequired,
 };
 
 export const query = graphql`

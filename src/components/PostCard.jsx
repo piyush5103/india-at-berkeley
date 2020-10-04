@@ -16,11 +16,17 @@ const PostCardContainer = styled("a")`
     flex-direction: column;
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
     transition: all 150ms ease-in-out;
+  font-family: 'Inter var', sans-serif;
 
     &:hover {
         box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.1);
         transition: all 150ms ease-in-out;
         cursor: pointer;
+
+
+		.PostDescription{
+			color: black;
+		}
 
         .PostCardAction {
             color: ${colors.blue500};
@@ -42,8 +48,9 @@ const PostCategory = styled("h6")`
 
 const PostTitle = styled("h4")`
     margin: 0;
-    margin-top: 1em;
-    text-align: center;
+    margin-top: 1.5em;
+	text-align: center;
+	font-weight: 600;
 `
 
 const PostMetas = styled("div")`
@@ -92,30 +99,27 @@ const PostCardAction = styled("div")`
 `
 
 const PostCard = ({ date, title, description, uid, image, linkedin }) => (
-    <PostCardContainer className="BlogPostCard" href={linkedin[0].text} target="_blank">
+	<PostCardContainer className="BlogPostCard" href={linkedin[0].text} target="_blank">
 
-        <PostImage>
-            <img src={image.url} alt="team" width="100%" />
-        </PostImage>
-        <PostTitle>
-            {title[0].text}
-        </PostTitle>
-        <PostDescription>
-            {RichText.render(description)}
-        </PostDescription>
+		<PostImage>
+			<img src={image.url} alt="team" width="100%" />
+		</PostImage>
+		<PostTitle>
+			{title[0].text}
+		</PostTitle>
+		<PostDescription className="PostDescription">
+			{RichText.render(description)}
+		</PostDescription>
 
 
-    </PostCardContainer>
+	</PostCardContainer>
 )
 
 export default PostCard;
 
 PostCard.propTypes = {
-
-
-
-    title: PropTypes.array.isRequired,
-    description: PropTypes.array.isRequired,
-    uid: PropTypes.string.isRequired,
-    linkedin: PropTypes.string.isRequired
+	title: PropTypes.array.isRequired,
+	description: PropTypes.array.isRequired,
+	uid: PropTypes.string.isRequired,
+	linkedin: PropTypes.string.isRequired
 }

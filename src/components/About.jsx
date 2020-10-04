@@ -6,41 +6,35 @@ import { RichText } from "prismic-reactjs";
 import PropTypes from "prop-types";
 
 const AboutContainer = styled("div")`
-    padding-top: 1em;
+	padding-top: 1em;
+	  font-family: 'Inter var', sans-serif;
 
 
 `
 
 
-
-
-
 const AboutBio = styled("div")`
-    padding-bottom: 3em;
-    max-width: 480px;
+	padding-bottom: 3em;
+	  font-family: 'Inter var', sans-serif;
 
 
-    @media(max-width: ${dimensions.maxwidthMobile}px) {
-        grid-row: 2;
-    }
 `
 
 
 
 
 const About = ({ bio, socialLinks }) => (
-    <AboutContainer>
+	<AboutContainer>
 
-        <AboutBio>
-            {RichText.render(bio)}
-        </AboutBio>
+		<AboutBio>
+			{RichText.render(bio)}
+		</AboutBio>
 
-    </AboutContainer>
+	</AboutContainer>
 )
 
 export default About;
 
 About.propTypes = {
-    bio: PropTypes.array.isRequired,
-
+	bio: PropTypes.array.isRequired,
 };

@@ -55,16 +55,16 @@ const ButtonContainer = styled("button")`
 `
 
 class Button extends Component {
-    render() {
-        const { children, ...props } = this.props;
-        return (
-            <ButtonContainer
-                onClick={this.props.onClick}
-                {...props}>
-                {this.props.children}
-            </ButtonContainer>
-        );
-    }
+	render() {
+		const { children, ...props } = this.props;
+		return (
+			<ButtonContainer
+				onClick={this.props.onClick}
+				{...props}>
+				{this.props.children}
+			</ButtonContainer>
+		);
+	}
 }
 
 export default Button;

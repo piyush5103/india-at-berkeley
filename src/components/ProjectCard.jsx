@@ -8,7 +8,8 @@ import PropTypes from "prop-types";
 
 const ProjectCardContainer = styled(Link)`
     display: grid;
-    grid-template-columns: 4fr 7fr;
+	grid-template-rows: 4fr 1fr;
+	max-height: 500px;
     box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.06);
     margin-bottom: 4em;
     transition: all 150ms ease-in-out;
@@ -16,11 +17,11 @@ const ProjectCardContainer = styled(Link)`
     color: currentColor;
 
     @media(max-width:950px) {
-        grid-template-columns: 4.5fr 7fr;
+        grid-template-rows: 3fr 1fr;
     }
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
-        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
     }
 
     @media(max-width:${dimensions.maxwidthMobile}px) {
@@ -56,7 +57,7 @@ const ProjectCardContainer = styled(Link)`
 
 const ProjectCardContent = styled("div")`
     background: white;
-    padding: 4em 3em 2.25em 3em;
+    padding: 2em 3em 2em 3em;
     position: relative;
 
     &:before {
@@ -77,7 +78,7 @@ const ProjectCardContent = styled("div")`
     }
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
-        grid-row: 2;
+        grid-row: 3;
     }
 `
 
@@ -94,7 +95,7 @@ const ProjectCardTitle = styled("h3")`
 const ProjectCardBlurb = styled("div")`
     margin-bottom: 0.5em;
     margin-top: 0.5em;
-    margin-bottom: 5em;
+    margin-bottom: 3.5em;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         margin-bottom: 2.5em;
@@ -119,15 +120,15 @@ const ProjectCardImageContainer = styled("div")`
     background: ${colors.grey200};
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     overflow: hidden;
     position: relative;
-    padding-left: 2em;
-    padding-right: 2em;
+    padding-left: 0em;
+	padding-right: 0em;
 
     @media(max-width:${dimensions.maxwidthTablet}px) {
         padding-top: 3em;
-        max-height: 200px;
+        max-height: 300px;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -157,34 +158,35 @@ const ProjectCardImageContainer = styled("div")`
     }
 `
 
-const ProjectCard = ({ category, title, description, thumbnail, uid}) => (
-    <ProjectCardContainer to={`/speakers/${uid}`}>
-        <ProjectCardContent className="ProjectCardContent">
-            <ProjectCardCategory>
-                {category[0].text}
-            </ProjectCardCategory>
-            <ProjectCardTitle>
-                {title[0].text}
-            </ProjectCardTitle>
-            <ProjectCardBlurb>
-                {RichText.render(description)}
-            </ProjectCardBlurb>
-            <ProjectCardAction className="ProjectCardAction">
-                See more <span>&#8594;</span>
-            </ProjectCardAction>
-        </ProjectCardContent>
-        <ProjectCardImageContainer className="ProjectCardImageContainer">
-            <img src={thumbnail.url} alt={title[0].text}/>
-        </ProjectCardImageContainer>
-    </ProjectCardContainer>
+const ProjectCard = ({ category, title, description, thumbnail, uid }) => (
+	<ProjectCardContainer to={`/speakers/${uid}`}>
+		<ProjectCardImageContainer className="ProjectCardImageContainer">
+			<img src={thumbnail.url} alt={title[0].text} />
+		</ProjectCardImageContainer>
+		<ProjectCardContent className="ProjectCardContent">
+			<ProjectCardCategory>
+				{category[0].text}
+			</ProjectCardCategory>
+			<ProjectCardTitle>
+				{title[0].text}
+			</ProjectCardTitle>
+			<ProjectCardBlurb>
+				{RichText.render(description)}
+			</ProjectCardBlurb>
+			<ProjectCardAction className="ProjectCardAction">
+				See more <span>&#8594;</span>
+			</ProjectCardAction>
+		</ProjectCardContent>
+
+	</ProjectCardContainer>
 )
 
 export default ProjectCard;
 
 ProjectCard.propTypes = {
-    category: PropTypes.array.isRequired,
-    thumbnail: PropTypes.object.isRequired,
-    title: PropTypes.array.isRequired,
-    description: PropTypes.array.isRequired,
-    uid: PropTypes.string.isRequired
+	category: PropTypes.array.isRequired,
+	thumbnail: PropTypes.object.isRequired,
+	title: PropTypes.array.isRequired,
+	description: PropTypes.array.isRequired,
+	uid: PropTypes.string.isRequired
 }

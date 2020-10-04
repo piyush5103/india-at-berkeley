@@ -1,0 +1,18 @@
+language: node_js
+
+node_js:
+  - "stable"
+
+branches:
+  only:
+    - csb-ngq1h
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - "npm i -g gatsby-cli"
+
+script:
+  - gatsby build

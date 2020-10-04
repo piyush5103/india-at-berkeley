@@ -2,33 +2,32 @@ import React from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { RichText } from "prismic-reactjs"
-import { graphql, Link } from "gatsby"
+import { StaticQuery, graphql, Link } from "gatsby"
 import styled from "@emotion/styled"
 import colors from "styles/colors"
 import dimensions from "styles/dimensions"
 import Button from "components/_ui/Button"
 import About from "components/About"
 import Layout from "components/Layout"
-import ProjectCard from "components/ProjectCard"
-import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from 'swiper';
-import slide1 from "images/slide1.png";
-import slide2 from "images/slide2.png";
-import slide3 from "images/slide3.png";
+import ProjectCard from "components/SpCa"
+import SpeakerCard from "components/SpeakerPost"
+import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper"
+import slide1 from "images/slide1.png"
+import slide2 from "images/slide2.png"
+import slide3 from "images/slide3.png"
 
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperSlide } from "swiper/react"
 
-// Import Swiper styles
-import 'swiper/swiper.scss';
-import 'swiper/components/navigation/navigation.scss';
-import 'swiper/components/pagination/pagination.scss';
+import "swiper/swiper.scss"
+import "swiper/components/navigation/navigation.scss"
+import "swiper/components/pagination/pagination.scss"
 
-SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
+SwiperCore.use([Navigation, Pagination, A11y, Autoplay])
 
 const Hero = styled("div")`
-  padding-top: 2.5em;
+  padding-top: 0em;
   padding-bottom: 3em;
-  margin-bottom: 6em;
-
+  margin-bottom: 4em;
 
   @media (max-width: ${dimensions.maxwidthMobile}px) {
     margin-bottom: 3em;
@@ -100,19 +99,40 @@ const Section = styled("div")`
   }
 `
 
+const SpeakerGrid = styled("div")`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2em;
+    font-family: 'Inter var', sans-serif;
+
+
+  @media (max-width: 1050px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1.5em;
+  }
+
+  @media (max-width: ${dimensions.maxwidthMobile}px) {
+    grid-template-columns: 1fr;
+    grid-gap: 2.5em;
+  }
+`
+
 const WorkAction = styled(Link)`
   font-weight: 600;
   text-decoration: none;
   color: currentColor;
   transition: all 150ms ease-in-out;
   margin-left: auto;
+  font-family: 'Inter var', sans-serif;
+
+margin-top: 4em;
 
   @media (max-width: ${dimensions.maxwidthTablet}px) {
-    margin: 0 auto;
+    
   }
 
   span {
-    margin-left: 1em;
+	margin-left: 1em;
     transform: translateX(-8px);
     display: inline-block;
     transition: transform 400ms ease-in-out;
@@ -130,111 +150,101 @@ const WorkAction = styled(Link)`
   }
 `
 
-const RenderBody = ({ home, projects, meta }) => (
-  <>
-    <Helmet
-      title={meta.title}
-      titleTemplate={`%s | ${meta.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: meta.description,
-        },
-        {
-          property: `og:title`,
-          content: meta.title,
-        },
-        {
-          property: `og:description`,
-          content: meta.description,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: meta.author,
-        },
-        {
-          name: `twitter:title`,
-          content: meta.title,
-        },
-        {
-          name: `twitter:description`,
-          content: meta.description,
-        },
-      ].concat(meta)}
-    />
-    <Hero>
-      {/* <>{RichText.render(home.hero_title)}</> */}
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={1}
-        navigation
-        pagination={{ clickable: true }}
-        autoplay={{ delay: 3000 }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log('slide change')}>
-        <SwiperSlide>
-          <img src={slide1} alt="slide" width="100%" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide2} alt="slide" width="100%" />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img src={slide3} alt="slide" width="100%" />
-        </SwiperSlide>
+const RenderBody = ({ home, projects, meta, posts }) => (
+	<>
+		<Helmet
+			title={meta.title}
+			titleTemplate={`%s | ${meta.title}`}
+			meta={[
+				{
+					name: `description`,
+					content: meta.description,
+				},
+				{
+					property: `og:title`,
+					content: meta.title,
+				},
+				{
+					property: `og:description`,
+					content: meta.description,
+				},
+				{
+					property: `og:type`,
+					content: `website`,
+				},
+				{
+					name: `twitter:card`,
+					content: `summary`,
+				},
+				{
+					name: `twitter:creator`,
+					content: meta.author,
+				},
+				{
+					name: `twitter:title`,
+					content: meta.title,
+				},
+				{
+					name: `twitter:description`,
+					content: meta.description,
+				},
+			].concat(meta)}
+		/>
+		<Hero>
+			<Swiper
+				spaceBetween={50}
+				slidesPerView={1}
+				navigation
+				pagination={{ clickable: true }}
+				autoplay={{ delay: 3000 }}
 
+			>
+				<SwiperSlide>
+					<img src={slide1} alt="slide1" width="100%" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<img src={slide2} alt="slide2" width="100%" />
+				</SwiperSlide>
+				<SwiperSlide>
+					<img src={slide3} alt="slide3" width="100%" />
+				</SwiperSlide>
+			</Swiper>
+		</Hero>
 
-      </Swiper>
-
-    </Hero>
-    <Section>
-      {projects.map((project, i) => (
-        <ProjectCard
-          key={i}
-          category={project.node.project_category}
-          title={project.node.project_title}
-          description={project.node.project_preview_description}
-          thumbnail={project.node.project_preview_thumbnail}
-          uid={project.node._meta.uid}
-        />
-      ))}
-      <WorkAction to={"/speakers"}>
-        See more speakers <span>&#8594;</span>
-      </WorkAction>
-    </Section>
-
-  </>
+		<Section>
+			<SpeakerGrid>
+				{projects.map((project, i) => (
+					<SpeakerCard
+						key={i}
+						category={project.node.project_category}
+						title={project.node.project_title}
+						description={project.node.project_preview_description}
+						body={project.node.project_description}
+						linkurl={project.node.project_linkurl}
+						linktext={project.node.project_linktext}
+						register={project.node.project_register}
+						thumbnail={project.node.project_preview_thumbnail}
+						uid={project.node._meta.uid}
+						date={project.node.project_post_date}
+					/>
+				))}
+			</SpeakerGrid>
+			<WorkAction to={"/speakers"}>
+				See more speakers <span>&#8594;</span>
+			</WorkAction>
+		</Section>
+	</>
 )
 
 export default ({ data }) => {
-  //Required check for no data being returned
-  const doc = data.prismic.allHomepages.edges.slice(0, 1).pop()
-  const projects = data.prismic.allProjects.edges
-  const meta = data.site.siteMetadata
+	//Required check for no data being returned
 
-  if (!doc || !projects) return null
 
-  return (
-    <Layout>
-      <RenderBody home={doc.node} projects={projects} meta={meta} />
-    </Layout>
-  )
-}
+	return (
 
-RenderBody.propTypes = {
-  home: PropTypes.object.isRequired,
-  projects: PropTypes.array.isRequired,
-  meta: PropTypes.object.isRequired,
-}
 
-export const query = graphql`
+		<StaticQuery
+			query={graphql`
   {
     prismic {
       allHomepages {
@@ -263,8 +273,26 @@ export const query = graphql`
             project_title
             project_preview_description
             project_preview_thumbnail
-            project_category
+			project_category
+			project_description
+			project_linkurl
+			project_linktext
+			project_register
             project_post_date
+            _meta {
+              uid
+            }
+          }
+        }
+      }
+      allPosts(sortBy: post_date_DESC) {
+        edges {
+          node {
+            post_title
+            post_hero_image
+            post_date
+            post_preview_description
+            linkedin
             _meta {
               uid
             }
@@ -280,4 +308,25 @@ export const query = graphql`
       }
     }
   }
-`
+`}
+			render={data => (
+				<Layout>
+					<RenderBody
+						home={data.prismic.allHomepages.edges.slice(0, 1).pop().node}
+						projects={data.prismic.allProjects.edges}
+						meta={data.site.siteMetadata}
+						posts={data.prismic.allPosts.edges}
+					/>
+				</Layout>
+			)}
+		/>
+
+	)
+}
+
+RenderBody.propTypes = {
+	home: PropTypes.object.isRequired,
+	projects: PropTypes.array.isRequired,
+	meta: PropTypes.object.isRequired,
+	posts: PropTypes.array.isRequired,
+}
