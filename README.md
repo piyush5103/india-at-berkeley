@@ -1,4 +1,9 @@
-# Prist | A Gatsby & Prismic Starter
+# Speaker Series: India at Berkeley
+
+A Berkeley student organization website.
+Website created by hacking a starter template.
+
+Prist | A Gatsby & Prismic Starter
 
 A light-themed starter powered by [Gatsby v2](https://www.gatsbyjs.org) and [Prismic](https://prismic.io/) to showcase portfolios and blogs.
 
